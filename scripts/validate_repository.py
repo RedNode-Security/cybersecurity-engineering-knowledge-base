@@ -16,6 +16,7 @@ SKIP_PARTS = {'.git'}
 REQUIRED_IOC_FIELDS = {'report_id', 'tlp', 'source', 'confidence', 'created', 'indicators'}
 TOP_LEVEL_MD_WITHOUT_FRONTMATTER = {
     'README.md', 'ROADMAP.md', 'CONTRIBUTING.md', 'SECURITY.md', 'LICENSE-OPTIONS.md',
+    'LICENSE.md', 'LICENSE-DOCS.md', 'LICENSE-CODE.md', 'NOTICE.md',
     'INDEX.md', 'BACKLOG.md', 'PROJECT_STATUS.md'
 }
 TEMPLATE_DIRS = {'99-Templates', '_meta'}

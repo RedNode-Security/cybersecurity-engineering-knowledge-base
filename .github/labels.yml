@@ -1,0 +1,46 @@
+# Suggested GitHub labels. This file is documentation unless imported by a label-sync tool.
+- name: domain:fundamentals
+  color: "0E8A16"
+  description: Core cybersecurity concepts and principles
+- name: domain:red-team
+  color: "B60205"
+  description: Authorized adversary simulation methodology
+- name: domain:blue-team
+  color: "1D76DB"
+  description: SOC, IR, detection engineering, and threat hunting
+- name: domain:threat-intel
+  color: "5319E7"
+  description: IOCs, CVEs, OSINT, and threat analysis
+- name: domain:cloud
+  color: "006B75"
+  description: Cloud, Kubernetes, and cloud identity security
+- name: domain:appsec
+  color: "D93F0B"
+  description: Application, API, OAuth, JWT, and secure coding
+- name: domain:ai-security
+  color: "7057FF"
+  description: LLM, RAG, agent, and AI SOC security
+- name: domain:automation
+  color: "FBCA04"
+  description: Automation, SIEM, SOAR, enrichment, and scripts
+- name: type:content
+  color: "C5DEF5"
+  description: Documentation content
+- name: type:template
+  color: "D4C5F9"
+  description: Template work
+- name: type:schema
+  color: "F9D0C4"
+  description: Structured data or schema work
+- name: type:automation
+  color: "FEF2C0"
+  description: Script, workflow, or automation work
+- name: priority:high
+  color: "B60205"
+  description: High-impact or blocking task
+- name: status:draft
+  color: "EDEDED"
+  description: Draft content needed
+- name: status:review
+  color: "FBCA04"
+  description: Needs review

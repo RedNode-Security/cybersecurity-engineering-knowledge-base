@@ -146,4 +146,9 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## License
 
-A final license has not been selected yet. See [`LICENSE-OPTIONS.md`](LICENSE-OPTIONS.md) before accepting external contributions.
+This repository uses a dual-license model:
+
+- Documentation, notes, templates, and diagrams: **CC BY-SA 4.0**
+- Scripts, schemas, detection logic, automation examples, and code snippets: **MIT**
+
+See [`LICENSE.md`](LICENSE.md), [`LICENSE-DOCS.md`](LICENSE-DOCS.md), and [`LICENSE-CODE.md`](LICENSE-CODE.md).

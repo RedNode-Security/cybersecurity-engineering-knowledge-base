@@ -17,6 +17,7 @@ Completed foundation items:
 - Validation scripts
 - GitHub issue templates
 - GitHub Actions validation workflow
+- Dual-license model selected and documented
 
 Phase 2 starter items added:
 
@@ -30,11 +31,11 @@ Phase 2 starter items added:
 
 ## Immediate Priorities
 
-1. Select repository license.
-2. Confirm GitHub Actions pass on `main`.
-3. Convert `BACKLOG.md` items into GitHub issues.
-4. Promote the strongest pages from `draft` to `reviewed` after source review.
-5. Add references to primary vendor documentation where required.
+1. Confirm GitHub Actions pass on `main`.
+2. Convert `BACKLOG.md` items into GitHub issues.
+3. Promote the strongest pages from `draft` to `reviewed` after source review.
+4. Add references to primary vendor documentation where required.
+5. Create GitHub labels from `.github/labels.yml` if desired.
 
 ## Quality Gates
 

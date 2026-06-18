@@ -89,7 +89,11 @@ Generated from Markdown files.
 
 - [Backlog](BACKLOG.md)
 - [Contributing Guide](CONTRIBUTING.md)
-- [License Options](LICENSE-OPTIONS.md)
+- [Code License — MIT](LICENSE-CODE.md)
+- [Documentation License — CC BY-SA 4.0](LICENSE-DOCS.md)
+- [License Model](LICENSE-OPTIONS.md)
+- [License](LICENSE.md)
+- [Notice](NOTICE.md)
 - [Project Status](PROJECT_STATUS.md)
 - [Cybersecurity Engineering Knowledge Base](README.md)
 - [Roadmap](ROADMAP.md)

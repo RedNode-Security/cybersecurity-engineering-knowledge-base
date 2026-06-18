@@ -22,6 +22,15 @@ Do not publish:
 - Instructions focused on stealth, evasion, persistence, or unauthorized access
 - Unverified accusations or unsupported attribution claims
 
+## Licensing
+
+By contributing to this repository, you agree that your contribution will be licensed under the repository's dual-license model:
+
+- Documentation, notes, templates, diagrams, and written content: **CC BY-SA 4.0**
+- Scripts, schemas, detection logic, automation examples, code snippets, and machine-readable examples: **MIT**
+
+Do not contribute content that you do not have the right to license under this model.
+
 ## Writing Standard
 
 Every substantial document should include:
