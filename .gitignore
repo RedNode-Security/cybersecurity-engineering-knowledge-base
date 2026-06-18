@@ -1,0 +1,25 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Secrets / local data
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.*
+.env.*
+local-data/
+private/
+
+# Generated
+*.log

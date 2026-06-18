@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sanitized IOC Report",
+  "type": "object",
+  "required": [
+    "report_id",
+    "tlp",
+    "source",
+    "confidence",
+    "created",
+    "indicators"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "tlp": {
+      "type": "string",
+      "enum": [
+        "TLP:CLEAR",
+        "TLP:GREEN",
+        "TLP:AMBER",
+        "TLP:RED"
+      ]
+    },
+    "source": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "created": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "value",
+          "confidence",
+          "context"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "ip",
+              "domain",
+              "url",
+              "sha256",
+              "sha1",
+              "md5",
+              "email",
+              "mutex",
+              "registry",
+              "file_path",
+              "user_agent",
+              "other"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "first_seen": {
+            "type": "string"
+          },
+          "last_seen": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "expiration": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

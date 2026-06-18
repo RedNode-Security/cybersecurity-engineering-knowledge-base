@@ -1,0 +1,40 @@
+{
+  "report_id": "ioc-sample-001",
+  "tlp": "TLP:CLEAR",
+  "source": "sanitized-example",
+  "confidence": "medium",
+  "created": "2026-06-18",
+  "description": "Sanitized example showing recommended IOC structure. Values use documentation-safe examples.",
+  "tags": [
+    "example",
+    "sanitized",
+    "training"
+  ],
+  "indicators": [
+    {
+      "type": "domain",
+      "value": "example-malicious-domain.invalid",
+      "confidence": "medium",
+      "first_seen": "2026-06-18",
+      "last_seen": "2026-06-18",
+      "context": "Training-only domain in .invalid TLD; not a real indicator.",
+      "expiration": "2026-09-18",
+      "tags": [
+        "c2",
+        "example"
+      ]
+    },
+    {
+      "type": "sha256",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000",
+      "confidence": "low",
+      "first_seen": "2026-06-18",
+      "last_seen": "2026-06-18",
+      "context": "Placeholder hash for schema demonstration only.",
+      "expiration": "2026-09-18",
+      "tags": [
+        "placeholder"
+      ]
+    }
+  ]
+}

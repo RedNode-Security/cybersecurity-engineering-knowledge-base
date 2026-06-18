@@ -1,0 +1,33 @@
+name: IOC submission
+description: Submit sanitized indicators for review
+title: "[IOC]: "
+labels: [ioc, threat-intelligence]
+body:
+  - type: dropdown
+    id: tlp
+    attributes:
+      label: TLP
+      options:
+        - TLP:CLEAR
+        - TLP:GREEN
+        - TLP:AMBER
+        - TLP:RED
+    validations:
+      required: true
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: Confidence
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
+  - type: textarea
+    id: indicators
+    attributes:
+      label: Indicators and context
+      description: Include source, context, and expiration. Do not include private environment data.
+    validations:
+      required: true

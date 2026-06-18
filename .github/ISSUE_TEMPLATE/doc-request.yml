@@ -1,0 +1,36 @@
+name: Documentation request
+description: Request a new note, guide, or reference page
+title: "[Doc]: "
+labels: [documentation]
+body:
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic
+      description: What should be documented?
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - fundamentals
+        - red-team
+        - blue-team
+        - threat-intelligence
+        - cloud-security
+        - application-security
+        - ai-security
+        - security-automation
+        - architecture
+        - resources
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Defensive or engineering value
+      description: Why is this useful?
+    validations:
+      required: true
