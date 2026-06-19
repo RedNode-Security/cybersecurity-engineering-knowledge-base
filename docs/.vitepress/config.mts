@@ -40,6 +40,20 @@ export default defineConfig({
           { text: 'Detection Library', link: '/detection-library' },
           { text: 'Site Roadmap', link: '/site-roadmap' }
         ]
+      },
+      {
+        text: 'Native References',
+        collapsed: false,
+        items: [
+          { text: 'Reference Index', link: '/reference/' },
+          { text: 'Password Spray Detection', link: '/reference/password-spray-detection' },
+          { text: 'Account Compromise Response', link: '/reference/account-compromise-response' },
+          { text: 'Log4Shell', link: '/reference/log4shell' },
+          { text: 'CloudTrail IAM Detection', link: '/reference/cloudtrail-iam-detection' },
+          { text: 'Broken Object Level Authorization', link: '/reference/broken-object-level-authorization' },
+          { text: 'Prompt Injection Defense', link: '/reference/prompt-injection-defense' },
+          { text: 'Security Operations Knowledge Platform', link: '/reference/security-operations-knowledge-platform' }
+        ]
       }
     ],
     search: { provider: 'local' },

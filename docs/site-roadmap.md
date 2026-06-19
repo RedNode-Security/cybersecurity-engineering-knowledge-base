@@ -12,17 +12,31 @@ safe_publication: true
 
 ## Current site model
 
-This VitePress site is a curated public portal. The full reference library remains
-in GitHub, where it can be reviewed, versioned, and validated.
+The VitePress site now has a curated portal and the first native published
+reference pages.
+
+The GitHub repository remains the source of truth for the full encyclopedia.
+The site presents the most useful starting points in a cleaner reading format.
+
+## Native pages added
+
+- Password Spray Detection
+- Account Compromise Response
+- Log4Shell Reference
+- CloudTrail IAM Detection
+- Broken Object Level Authorization
+- Prompt Injection Defense
+- Security Operations Knowledge Platform
 
 ## Next site improvements
 
-1. Move the highest-value published pages into the VitePress site as native pages.
-2. Add a native detection library browser.
-3. Add Mermaid-rendered architecture diagrams.
-4. Add domain-specific landing pages.
-5. Add release notes and review status pages.
-6. Add search-friendly summaries for CVEs, playbooks, and detections.
+1. Add a native identity detection section.
+2. Add a native Windows detection section.
+3. Add a native cloud security section.
+4. Add a native AppSec section.
+5. Add a native AI security section.
+6. Add case studies.
+7. Add diagrams directly into the site.
 
 ## Recommended content migration order
 
@@ -34,8 +48,6 @@ in GitHub, where it can be reviewed, versioned, and validated.
 | 4 | AI security and architecture references |
 | 5 | CVE library and IR playbooks |
 
-## Why not mirror everything immediately?
+## Full source
 
-The repository is large. Publishing everything at once makes the site harder to
-navigate. A curated portal gives users a clean entry point while the full
-repository remains available for deep reference.
+- [Cybersecurity Engineering Handbook repository](https://github.com/RedNode-Security/cybersecurity-engineering-handbook)

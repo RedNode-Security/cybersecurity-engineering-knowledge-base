@@ -15,25 +15,31 @@ that represent the intended quality standard.
 
 ## Detection and response
 
-- [Password Spray Detection](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/02-Blue-Team/Detection-Engineering/reference-password-spray-detection.md)
-- [Account Compromise Response](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/02-Blue-Team/Incident-Response/reference-account-compromise-response.md)
+- [Password Spray Detection](reference/password-spray-detection.md)
+- [Account Compromise Response](reference/account-compromise-response.md)
 
 ## Threat intelligence and CVE analysis
 
-- [CVE-2021-44228 Log4Shell Reference](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/03-Threat-Intelligence/CVE-Intelligence/cve-2021-44228-log4shell-reference.md)
+- [Log4Shell Reference](reference/log4shell.md)
 
 ## Cloud security
 
-- [CloudTrail IAM Detection](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/04-Cloud-Security/AWS-Security/reference-cloudtrail-iam-detection.md)
+- [CloudTrail IAM Detection](reference/cloudtrail-iam-detection.md)
 
 ## Application security
 
-- [Broken Object Level Authorization](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/05-Application-Security/API-Security/reference-broken-object-level-authorization.md)
+- [Broken Object Level Authorization](reference/broken-object-level-authorization.md)
 
 ## AI security
 
-- [Prompt Injection Defense](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/06-AI-Security/LLM-Security/reference-prompt-injection-defense.md)
+- [Prompt Injection Defense](reference/prompt-injection-defense.md)
 
 ## Architecture
 
-- [Security Operations Knowledge Platform](https://github.com/RedNode-Security/cybersecurity-engineering-handbook/blob/main/08-Architecture/reference-security-operations-knowledge-platform.md)
+- [Security Operations Knowledge Platform](reference/security-operations-knowledge-platform.md)
+
+## Full source repository
+
+The full library remains available in GitHub:
+
+- [Cybersecurity Engineering Handbook repository](https://github.com/RedNode-Security/cybersecurity-engineering-handbook)
