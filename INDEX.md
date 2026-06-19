@@ -256,7 +256,7 @@ Generated from Markdown files.
 - [Detection — <Behavior Name>](99-Templates/detection-rule-template.md)
 - [<Topic Title>](99-Templates/document-template.md)
 - [IR Playbook — <Scenario>](99-Templates/incident-response-playbook-template.md)
-- [IOC Report — <Campaign / Malware / Case>](99-Templates/ioc-report-template.md)
+- [IOC Report — <Campaign / Case / Malware>](99-Templates/ioc-report-template.md)
 - [Lab — <Name>](99-Templates/lab-template.md)
 - [Templates](99-Templates/README.md)
 - [Threat Actor Profile — <Name>](99-Templates/threat-actor-profile-template.md)
