@@ -1,4 +1,4 @@
-# Cybersecurity Engineering Knowledge Base
+# Cybersecurity Engineering Handbook
 
 [![Validate repository](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/validate.yml/badge.svg)](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/validate.yml)
 [![Markdown Validation](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/markdown-check.yml/badge.svg)](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/markdown-check.yml)
