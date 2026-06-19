@@ -23,3 +23,11 @@ private/
 
 # Generated
 *.log
+
+# Node / VitePress
+node_modules/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# VitePress local temp
+.temp/

@@ -1,0 +1,17 @@
+{
+  "name": "cybersecurity-engineering-handbook",
+  "version": "1.0.0-reference-candidate",
+  "private": true,
+  "type": "module",
+  "description": "A practical cybersecurity engineering reference for detection, response, threat intelligence, automation, and architecture.",
+  "scripts": {
+    "docs:dev": "vitepress docs --host 0.0.0.0",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 0.0.0.0",
+    "validate": "python scripts/validate_repository.py && python scripts/validate_json_samples.py && python scripts/validate_detection_metadata.py && python scripts/validate_detection_reference_library.py && python scripts/validate_cve_pages.py && python scripts/check_review_dates.py && python scripts/check_internal_links.py && python scripts/generate_index.py --check",
+    "site:check": "npm run docs:build"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

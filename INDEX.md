@@ -279,6 +279,17 @@ Generated from Markdown files.
 - [Contributing Guide](CONTRIBUTING.md)
 - [Cybersecurity Engineering Coverage Matrix](COVERAGE_MATRIX.md)
 - [Detection Reference Library](DETECTION_REFERENCE_LIBRARY.md)
+
+## docs
+
+- [Detection Library](docs/detection-library.md)
+- [Cybersecurity Engineering Handbook](docs/index.md)
+- [Published References](docs/published-references.md)
+- [Site Roadmap](docs/site-roadmap.md)
+- [Start Here](docs/start-here.md)
+
+## Root
+
 - [Code License — MIT](LICENSE-CODE.md)
 - [Documentation License — CC BY-SA 4.0](LICENSE-DOCS.md)
 - [License Model](LICENSE-OPTIONS.md)
@@ -288,7 +299,7 @@ Generated from Markdown files.
 - [Generated Published Index](PUBLISHED_INDEX.generated.md)
 - [Published Index](PUBLISHED_INDEX.md)
 - [Publishing Guide](PUBLISHING.md)
-- [Cybersecurity Engineering Handbook](README.md)
+- [Cybersecurity Engineering Knowledge Base](README.md)
 - [Reference-Grade Roadmap](REFERENCE_GRADE_ROADMAP.md)
 
 ## RELEASE_NOTES
@@ -304,3 +315,4 @@ Generated from Markdown files.
 - [Super Deep Dive Roadmap](SUPER_DEEP_DIVE_ROADMAP.md)
 - [Super Deep Dive Status](SUPER_DEEP_DIVE_STATUS.md)
 - [Versioning](VERSIONING.md)
+- [VitePress Site Guide](VITEPRESS.md)
