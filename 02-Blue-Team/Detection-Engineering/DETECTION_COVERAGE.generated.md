@@ -1,15 +1,3 @@
----
-title: Detection Coverage.Generated
-domain: resources
-category: generated-report
-status: draft
-created: 2026-06-19
-updated: 2026-06-19
-tags: [generated, coverage]
-difficulty: intermediate
-safe_publication: true
----
-
 # Detection Coverage Report
 
 Total rules: 66

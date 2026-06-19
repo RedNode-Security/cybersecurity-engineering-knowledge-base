@@ -1,15 +1,3 @@
----
-title: Published Index.Generated
-domain: resources
-category: generated-report
-status: draft
-created: 2026-06-19
-updated: 2026-06-19
-tags: [generated, coverage]
-difficulty: intermediate
-safe_publication: true
----
-
 # Generated Published Index
 
 Generated from pages with `status: published`.
@@ -21,3 +9,8 @@ Generated from pages with `status: published`.
 - [Reference — Broken Object Level Authorization](05-Application-Security/API-Security/reference-broken-object-level-authorization.md)
 - [Reference — Prompt Injection Defense](06-AI-Security/LLM-Security/reference-prompt-injection-defense.md)
 - [Reference — Security Operations Knowledge Platform](08-Architecture/reference-security-operations-knowledge-platform.md)
+- [VitePress Site Guide](VITEPRESS.md)
+- [Detection Library](docs/detection-library.md)
+- [Published References](docs/published-references.md)
+- [Site Roadmap](docs/site-roadmap.md)
+- [Start Here](docs/start-here.md)
