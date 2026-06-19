@@ -1,0 +1,38 @@
+{
+  "id": "DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+  "name": "New Service on Sensitive Host",
+  "status": "experimental",
+  "hypothesis": "Persistence may involve service creation on sensitive hosts.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "windows_system_events",
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "service_name",
+    "actor"
+  ],
+  "false_positives": [
+    "software deployment"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/new-service-sensitive-host.md",
+  "test_case_id": "TEST-DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+  "logic": "new_service and host_criticality high and actor not deployment_system",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

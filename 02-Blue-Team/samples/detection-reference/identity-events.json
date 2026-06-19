@@ -1,0 +1,241 @@
+[
+  {
+    "event_id": "evt-id-001",
+    "timestamp": "2026-06-19T08:08:00Z",
+    "source_ip": "203.0.113.10",
+    "user": "user2@example.com",
+    "result": "success",
+    "prior_failures_distinct_users_15m": 32,
+    "mfa_result": "approved",
+    "detection_id": "DET-IDENTITY-PASSWORD_SPRAY_FOLLOWED_BY_SUCCESS",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-001",
+    "timestamp": "2026-06-19T09:00:00Z",
+    "source_ip": "198.51.100.5",
+    "user": "scanner@example.com",
+    "result": "failure",
+    "known_scanner": true,
+    "detection_id": "DET-IDENTITY-PASSWORD_SPRAY_FOLLOWED_BY_SUCCESS",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-002",
+    "timestamp": "2026-06-19T10:20:00Z",
+    "user": "admin@example.com",
+    "risk": "high",
+    "action": "Add member to privileged role",
+    "minutes_since_signin": 12,
+    "detection_id": "DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-002",
+    "timestamp": "2026-06-19T10:20:00Z",
+    "user": "admin@example.com",
+    "risk": "low",
+    "action": "Approved role activation",
+    "change_id": "CHG-100",
+    "detection_id": "DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-003",
+    "timestamp": "2026-06-19T11:00:00Z",
+    "user": "user@example.com",
+    "action": "mfa_method_added",
+    "followed_by_new_source_login": true,
+    "detection_id": "DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-003",
+    "timestamp": "2026-06-19T11:00:00Z",
+    "user": "user@example.com",
+    "action": "mfa_method_added",
+    "ticket_id": "HD-123",
+    "detection_id": "DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-004",
+    "timestamp": "2026-06-19T12:00:00Z",
+    "user": "user@example.com",
+    "app_publisher_verified": false,
+    "scopes": [
+      "Mail.Read",
+      "offline_access"
+    ],
+    "data_access_1h": true,
+    "detection_id": "DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-004",
+    "timestamp": "2026-06-19T12:00:00Z",
+    "app_publisher_verified": true,
+    "approval_id": "APP-55",
+    "detection_id": "DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-005",
+    "actor": "helpdesk@example.com",
+    "target": "temp.admin@example.com",
+    "role": "Global Administrator",
+    "change_id": null,
+    "detection_id": "DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-005",
+    "actor": "pam-system@example.com",
+    "target": "admin@example.com",
+    "role": "Privileged Role",
+    "change_id": "CHG-88",
+    "detection_id": "DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-006",
+    "user": "finance@example.com",
+    "geo": "unexpected",
+    "application": "Finance Admin",
+    "impossible_travel": true,
+    "detection_id": "DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-006",
+    "user": "traveler@example.com",
+    "geo": "new",
+    "vpn_known": true,
+    "managed_device": true,
+    "detection_id": "DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-007",
+    "user": "breakglass-admin@example.com",
+    "result": "success",
+    "approval_id": null,
+    "detection_id": "DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-007",
+    "user": "breakglass-admin@example.com",
+    "result": "success",
+    "approval_id": "BG-TEST-1",
+    "test_window": true,
+    "detection_id": "DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-008",
+    "user": "former.user@example.com",
+    "account_status": "disabled",
+    "result": "success",
+    "detection_id": "DET-IDENTITY-DISABLED_ACCOUNT_SUCCESSFUL_LOGIN",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-008",
+    "user": "test.disabled@example.com",
+    "result": "blocked",
+    "account_status": "disabled",
+    "detection_id": "DET-IDENTITY-DISABLED_ACCOUNT_SUCCESSFUL_LOGIN",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-009",
+    "user": "user@example.com",
+    "prompt_count_10m": 9,
+    "final_result": "approved",
+    "detection_id": "DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-009",
+    "user": "user@example.com",
+    "prompt_count_10m": 2,
+    "final_result": "approved",
+    "detection_id": "DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-010",
+    "user": "svc-backup@example.com",
+    "account_type": "service",
+    "logon_type": "interactive",
+    "result": "success",
+    "detection_id": "DET-IDENTITY-SERVICE_ACCOUNT_INTERACTIVE_LOGIN",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-010",
+    "user": "svc-backup@example.com",
+    "account_type": "service",
+    "logon_type": "service",
+    "result": "success",
+    "detection_id": "DET-IDENTITY-SERVICE_ACCOUNT_INTERACTIVE_LOGIN",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-011",
+    "user": "payroll@example.com",
+    "device_seen_first_time": true,
+    "application": "Payroll Admin",
+    "detection_id": "DET-IDENTITY-NEW_DEVICE_SENSITIVE_ACCESS",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-011",
+    "user": "payroll@example.com",
+    "device_seen_first_time": true,
+    "device_enrollment_ticket": "IT-500",
+    "detection_id": "DET-IDENTITY-NEW_DEVICE_SENSITIVE_ACCESS",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-id-012",
+    "user": "disabled.user@example.com",
+    "token_event": "refresh",
+    "account_status": "disabled",
+    "detection_id": "DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-id-benign-012",
+    "user": "disabled.user@example.com",
+    "token_event": "revoked",
+    "account_status": "disabled",
+    "detection_id": "DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

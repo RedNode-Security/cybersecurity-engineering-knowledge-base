@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+  "name": "AWS Administrator Policy Attachment",
+  "status": "experimental",
+  "hypothesis": "Privilege escalation may involve broad administrator policy attachment.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "aws_cloudtrail"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "policyArn",
+    "userIdentity.arn"
+  ],
+  "false_positives": [
+    "approved break-glass"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-admin-policy-attachment.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+  "logic": "Attach*Policy and policy broad_admin and no change",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

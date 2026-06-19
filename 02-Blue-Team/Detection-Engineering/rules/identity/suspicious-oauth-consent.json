@@ -1,0 +1,40 @@
+{
+  "id": "DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+  "name": "Suspicious OAuth Consent",
+  "status": "experimental",
+  "hypothesis": "OAuth consent abuse may grant high-risk scopes to an untrusted application.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_audit_logs",
+    "application_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "app_id",
+    "scopes",
+    "publisher"
+  ],
+  "false_positives": [
+    "approved SaaS rollout",
+    "known internal app"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/suspicious-oauth-consent.md",
+  "test_case_id": "TEST-DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+  "logic": "oauth_consent where high_risk_scope and unverified_publisher",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

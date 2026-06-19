@@ -2,24 +2,42 @@
 
 ## Purpose
 
-This section collects notes, playbooks, diagrams, checklists, and references for **Security Automation**.
+Security automation reduces repetitive work, improves consistency, and speeds up
+response. Good automation enriches, validates, routes, and documents before it
+attempts disruptive containment.
 
-## Suggested Topics
+## Automation Maturity Model
 
-- Mini SIEM concepts
-- Threat intelligence platform design
-- SOAR workflows
-- Automation framework patterns
-- Enrichment pipelines
-- Feedback loops
+```text
+Manual checklist → Scripted helper → Enrichment pipeline → Orchestrated workflow → Human-approved response
+```
 
-## Recommended First Notes
+## Detailed Pages
 
-- Start with one overview page.
-- Add one practical checklist.
-- Add one detection, architecture, or lab artifact where applicable.
-- Link back to references and related domains.
+- [Security Enrichment Pipeline Design](enrichment-pipeline-design.md)
+- [Example Enrichment Workflow](example-enrichment-workflow.md)
 
-## Local Index
+## Good First Automations
 
-Add links here as this section grows.
+- Validate IOC JSON.
+- Generate an enriched alert summary.
+- Check log source health.
+- Add asset owner and criticality to alerts.
+- Create case templates.
+- Flag stale indicators and detections.
+
+## Risky Automations
+
+Use human approval for actions that disable accounts, block infrastructure, modify
+firewalls, delete data, revoke production credentials, or affect customers.
+
+## Automation Quality Standard
+
+Automation content should include:
+
+- Inputs and outputs
+- Required fields
+- Failure modes
+- Audit logging
+- Rollback or approval plan
+- Example input and output

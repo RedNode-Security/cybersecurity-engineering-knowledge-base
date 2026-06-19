@@ -1,0 +1,227 @@
+[
+  {
+    "event_id": "evt-cloud-001",
+    "eventName": "ConsoleLogin",
+    "userIdentity": {
+      "type": "Root"
+    },
+    "mfaAuthenticated": true,
+    "detection_id": "DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-001",
+    "eventName": "ConsoleLogin",
+    "userIdentity": {
+      "type": "Root"
+    },
+    "break_glass_test": true,
+    "detection_id": "DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-002",
+    "eventName": "CreateAccessKey",
+    "user": "example-user",
+    "key_creation_count_90d": 0,
+    "detection_id": "DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-002",
+    "eventName": "CreateAccessKey",
+    "user": "deploy-svc",
+    "rotation_ticket": "CHG-10",
+    "detection_id": "DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-003",
+    "eventName": "StopLogging",
+    "actor": "arn:aws:iam::123:user/user",
+    "detection_id": "DET-CLOUD-AWS_CLOUDTRAIL_TAMPERING",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-003",
+    "eventName": "UpdateTrail",
+    "actor": "logging-pipeline-role",
+    "change_id": "CHG-11",
+    "detection_id": "DET-CLOUD-AWS_CLOUDTRAIL_TAMPERING",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-004",
+    "eventName": "AttachUserPolicy",
+    "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess",
+    "change_id": null,
+    "detection_id": "DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-004",
+    "eventName": "AttachRolePolicy",
+    "policyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+    "change_id": "CHG-12",
+    "detection_id": "DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-005",
+    "eventName": "DeleteDetector",
+    "actor": "unexpected-role",
+    "detection_id": "DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-005",
+    "eventName": "UpdateDetector",
+    "actor": "security-admin",
+    "change_id": "CHG-13",
+    "detection_id": "DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-006",
+    "eventName": "DeletePublicAccessBlock",
+    "bucket": "sensitive-bucket",
+    "actor": "user",
+    "detection_id": "DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-006",
+    "eventName": "PutPublicAccessBlock",
+    "bucket": "public-assets",
+    "approved_public": true,
+    "detection_id": "DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-007",
+    "eventName": "PutKeyPolicy",
+    "key_classification": "sensitive",
+    "actor": "user",
+    "detection_id": "DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-007",
+    "eventName": "PutKeyPolicy",
+    "actor": "kms-admin",
+    "change_id": "CHG-14",
+    "detection_id": "DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-008",
+    "eventName": "AuthorizeSecurityGroupIngress",
+    "cidr": "0.0.0.0/0",
+    "port": 22,
+    "asset": "prod-admin",
+    "detection_id": "DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-008",
+    "eventName": "AuthorizeSecurityGroupIngress",
+    "cidr": "198.51.100.0/24",
+    "port": 443,
+    "change_id": "CHG-15",
+    "detection_id": "DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-009",
+    "action": "Add service principal credential",
+    "actor": "user@example.com",
+    "app": "prod-app",
+    "detection_id": "DET-CLOUD-AZURE_SERVICE_PRINCIPAL_CREDENTIAL_ADDED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-009",
+    "action": "Add service principal credential",
+    "actor": "automation",
+    "rotation_ticket": "CHG-16",
+    "detection_id": "DET-CLOUD-AZURE_SERVICE_PRINCIPAL_CREDENTIAL_ADDED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-010",
+    "actor": "user@example.com",
+    "app_verified": false,
+    "scopes": [
+      "Mail.Read",
+      "Files.Read.All"
+    ],
+    "detection_id": "DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-010",
+    "actor": "admin@example.com",
+    "app_verified": true,
+    "approval_id": "APP-10",
+    "detection_id": "DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-011",
+    "actor": "user@example.com",
+    "target": "temp@example.com",
+    "role": "Global Administrator",
+    "change_id": null,
+    "detection_id": "DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-011",
+    "actor": "pim-service",
+    "target": "admin@example.com",
+    "role": "Reader",
+    "approval_id": "PIM-1",
+    "detection_id": "DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-cloud-012",
+    "actor": "user@example.com",
+    "action": "Disable conditional access policy",
+    "policy": "Require MFA for admins",
+    "detection_id": "DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-cloud-benign-012",
+    "actor": "identity-admin",
+    "action": "Update conditional access policy",
+    "change_id": "CHG-17",
+    "detection_id": "DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

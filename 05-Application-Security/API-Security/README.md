@@ -10,32 +10,40 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # API Security
 
 ## Overview
 
-API security focuses on protecting application interfaces from unauthorized access, data exposure, business logic abuse, and insecure integration patterns.
+API security protects application interfaces from unauthorized access, data
+exposure, business logic abuse, and insecure integrations.
 
-## Key Topics
+## Local Pages
 
-- Authentication and authorization
-- Object-level authorization
-- Rate limiting and abuse prevention
-- Input validation
-- Error handling
-- Token management
-- Logging and monitoring
+- [API Security Checklist](api-security-checklist.md)
+- [API Threat Model Example](api-threat-model-example.md)
 
-## Defender Questions
+## API Security Model
 
-- Which APIs expose sensitive data?
-- Which endpoints require object-level access checks?
-- Are high-risk operations logged?
-- Are tokens scoped and rotated?
-- Are rate limits and abuse controls in place?
+```text
+Client → Authentication → Authorization → Business Logic → Data Access → Audit Logging
+```
 
-## Starter Templates
+## Key Risks
 
-- Use the general document template for concept pages
-- Use detection templates for suspicious API behavior
-- Use architecture templates for gateway and identity design
+| Risk | Example |
+|---|---|
+| Broken object authorization | User accesses another tenant's object |
+| Broken function authorization | Normal user performs admin action |
+| Excessive data exposure | API returns sensitive fields not required by UI |
+| Token validation failure | API accepts wrong audience or unsigned token |
+| Abuse and automation | High-volume scraping or brute force |
+
+## Defensive Questions
+
+- Who is the caller?
+- What object is being accessed?
+- Who owns the object?
+- What action is being performed?
+- Is this action logged?
+- Can abuse be detected?

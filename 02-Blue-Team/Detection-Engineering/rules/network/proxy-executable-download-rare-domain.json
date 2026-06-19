@@ -1,0 +1,38 @@
+{
+  "id": "DET-NETWORK-PROXY_EXECUTABLE_DOWNLOAD_RARE_DOMAIN",
+  "name": "Executable Download From Rare Domain",
+  "status": "experimental",
+  "hypothesis": "Malware staging may involve executable download from rare domain.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "proxy_logs",
+    "dns_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "url",
+    "file_type"
+  ],
+  "false_positives": [
+    "software deployment"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/network/proxy-executable-download-rare-domain.md",
+  "test_case_id": "TEST-DET-NETWORK-PROXY_EXECUTABLE_DOWNLOAD_RARE_DOMAIN",
+  "logic": "file_type executable and domain_prevalence low",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

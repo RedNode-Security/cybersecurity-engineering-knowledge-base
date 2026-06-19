@@ -1,0 +1,38 @@
+{
+  "id": "DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+  "name": "Multiple MFA Prompts for User",
+  "status": "experimental",
+  "hypothesis": "MFA fatigue attempts may show repeated prompts before approval.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "mfa_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "method",
+    "result"
+  ],
+  "false_positives": [
+    "user retrying login",
+    "mobile network issues"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/multiple-mfa-prompts-user.md",
+  "test_case_id": "TEST-DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+  "logic": "mfa_prompt_count(user,10m) >= threshold and final approval",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

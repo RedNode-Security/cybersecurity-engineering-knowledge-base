@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-06-19T10:00:00Z",
+    "type": "dns",
+    "client": "workstation-01",
+    "query": "training-beacon.example.invalid",
+    "response": "198.51.100.50"
+  },
+  {
+    "timestamp": "2026-06-19T10:01:00Z",
+    "type": "proxy",
+    "user": "user@example.com",
+    "url": "https://training-beacon.example.invalid/update.bin",
+    "status": 200,
+    "bytes_out": 500,
+    "bytes_in": 2048
+  }
+]

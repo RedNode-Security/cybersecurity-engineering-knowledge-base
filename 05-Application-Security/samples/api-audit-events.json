@@ -1,0 +1,13 @@
+[
+  {
+    "timestamp": "2026-06-18T13:00:00Z",
+    "request_id": "req-example-001",
+    "user_id": "user-123",
+    "tenant_id": "tenant-a",
+    "endpoint": "/api/v1/projects/project-999/invoices",
+    "action": "invoice.read",
+    "result": "denied",
+    "reason": "cross_tenant_access_attempt",
+    "source_ip": "198.51.100.10"
+  }
+]

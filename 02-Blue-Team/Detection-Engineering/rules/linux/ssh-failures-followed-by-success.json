@@ -1,0 +1,38 @@
+{
+  "id": "DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+  "name": "SSH Failures Followed by Success",
+  "status": "experimental",
+  "hypothesis": "SSH brute force or spraying may show failures followed by success.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "linux_auth_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "source_ip",
+    "user",
+    "result"
+  ],
+  "false_positives": [
+    "bastion host",
+    "mistyped deployment credential"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/linux/ssh-failures-followed-by-success.md",
+  "test_case_id": "TEST-DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+  "logic": "ssh failures from source >= threshold and success from same source",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

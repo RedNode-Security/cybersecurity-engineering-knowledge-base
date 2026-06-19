@@ -1,0 +1,38 @@
+{
+  "id": "DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+  "name": "Kubernetes Privileged Pod Created",
+  "status": "experimental",
+  "hypothesis": "Privileged pods can weaken container isolation.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "kubernetes_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "namespace",
+    "pod",
+    "security_context"
+  ],
+  "false_positives": [
+    "security daemonset"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/kubernetes/privileged-pod-created.md",
+  "test_case_id": "TEST-DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+  "logic": "pod created privileged=true in non-approved namespace",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

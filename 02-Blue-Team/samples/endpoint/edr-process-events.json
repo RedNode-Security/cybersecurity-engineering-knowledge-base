@@ -1,0 +1,11 @@
+[
+  {
+    "timestamp": "2026-06-19T11:00:00Z",
+    "host": "win01",
+    "user": "user@example.com",
+    "parent_process": "winword.exe",
+    "process": "powershell.exe",
+    "command_line": "redacted synthetic command",
+    "network_connection": "198.51.100.55"
+  }
+]

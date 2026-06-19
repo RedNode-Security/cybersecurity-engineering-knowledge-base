@@ -1,0 +1,38 @@
+{
+  "id": "DET-NETWORK-ANONYMIZING_NETWORK_FROM_SERVER",
+  "name": "Anonymizing Network Access From Server",
+  "status": "experimental",
+  "hypothesis": "Servers usually should not initiate anonymizing network connections.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "proxy_logs",
+    "network_flow_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "destination_category"
+  ],
+  "false_positives": [
+    "research lab",
+    "security testing"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/network/anonymizing-network-from-server.md",
+  "test_case_id": "TEST-DET-NETWORK-ANONYMIZING_NETWORK_FROM_SERVER",
+  "logic": "server asset and destination_category anonymizer",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

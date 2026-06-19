@@ -1,0 +1,38 @@
+{
+  "id": "DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+  "name": "Scheduled Task Created by Unusual User",
+  "status": "experimental",
+  "hypothesis": "Persistence may involve scheduled task creation by unusual users.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "windows_task_scheduler",
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "user",
+    "task_name"
+  ],
+  "false_positives": [
+    "IT automation"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/scheduled-task-unusual-user.md",
+  "test_case_id": "TEST-DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+  "logic": "scheduled_task_created and user rare_for_task_creation",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

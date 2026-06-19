@@ -1,0 +1,114 @@
+[
+  {
+    "event_id": "evt-linux-001",
+    "source_ip": "203.0.113.20",
+    "failed_users_15m": 18,
+    "success_user": "deploy",
+    "detection_id": "DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-001",
+    "source_ip": "198.51.100.10",
+    "known_bastion": true,
+    "result": "success",
+    "detection_id": "DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-linux-002",
+    "file_path": "/etc/sudoers.d/temp",
+    "actor": "user",
+    "change_id": null,
+    "detection_id": "DET-LINUX-SUDOERS_FILE_MODIFIED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-002",
+    "file_path": "/etc/sudoers.d/deploy",
+    "actor": "config-mgmt",
+    "change_id": "CHG-5",
+    "detection_id": "DET-LINUX-SUDOERS_FILE_MODIFIED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-linux-003",
+    "host": "linux01",
+    "user": "deploy",
+    "file_path": "/home/deploy/.ssh/authorized_keys",
+    "new_key": true,
+    "detection_id": "DET-LINUX-AUTHORIZED_KEYS_MODIFIED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-003",
+    "host": "linux01",
+    "user": "deploy",
+    "change_id": "CHG-6",
+    "new_key": true,
+    "detection_id": "DET-LINUX-AUTHORIZED_KEYS_MODIFIED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-linux-004",
+    "service_name": "example-update.service",
+    "actor": "user",
+    "enabled": true,
+    "detection_id": "DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-004",
+    "service_name": "approved-agent.service",
+    "actor": "config-mgmt",
+    "change_id": "CHG-7",
+    "detection_id": "DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-linux-005",
+    "user": "www-data",
+    "file_path": "/var/spool/cron/www-data",
+    "new_entry": true,
+    "detection_id": "DET-LINUX-CRON_ENTRY_MODIFIED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-005",
+    "user": "root",
+    "file_path": "/etc/cron.d/backup",
+    "change_id": "CHG-8",
+    "detection_id": "DET-LINUX-CRON_ENTRY_MODIFIED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-linux-006",
+    "actor": "user",
+    "target_user": "tempadmin",
+    "group": "sudo",
+    "change_id": null,
+    "detection_id": "DET-LINUX-NEW_SUDO_USER_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-linux-benign-006",
+    "actor": "provisioning",
+    "target_user": "newadmin",
+    "group": "sudo",
+    "ticket_id": "HR-9",
+    "detection_id": "DET-LINUX-NEW_SUDO_USER_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

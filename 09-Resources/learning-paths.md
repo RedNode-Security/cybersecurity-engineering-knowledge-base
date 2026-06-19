@@ -10,60 +10,81 @@ difficulty: beginner
 safe_publication: true
 ---
 
+
 # Cybersecurity Engineering Learning Paths
 
 ## Overview
 
-This page organizes the repository into practical learning paths.
+These paths organize the repository into practical learning sequences. Each path
+should produce artifacts, not just reading notes.
 
-## Path 1 — Security Engineering Foundations
+## Path 1 — Foundations
 
 1. Security engineering principles
-2. Network security fundamentals
-3. Linux and Windows hardening
-4. Cryptography basics
-5. Risk management
+2. Network security foundations
+3. Windows event logging
+4. Linux hardening and logging
+5. Risk and control evidence
 
-## Path 2 — Blue Team and SOC
+Output:
+
+- System diagram
+- Control checklist
+- Detection hypothesis
+
+## Path 2 — Blue Team
 
 1. Log source strategy
 2. Detection engineering methodology
-3. Windows authentication detection
-4. SOC alert triage
+3. Detection rule examples
+4. SOC triage workflow
 5. Account compromise playbook
-6. Threat hunting methodology
 
-## Path 3 — Threat Intelligence and CVE Operations
+Output:
+
+- Log coverage matrix
+- Detection draft
+- Triage notes
+- Incident timeline
+
+## Path 3 — Threat Intelligence
 
 1. IOC management
-2. IOC lifecycle and scoring
-3. CVE triage workflow
-4. Threat actor profiling
-5. OSINT workflow
+2. IOC lifecycle
+3. CVE triage
+4. CVE scoring worksheet
+5. Intelligence-to-detection mapping
 
-## Path 4 — Cloud, Application, and AI Security
+Output:
+
+- IOC report
+- CVE decision record
+- Detection opportunity
+
+## Path 4 — Cloud, AppSec, and AI
 
 1. AWS IAM hardening
-2. API security checklist
-3. OAuth and JWT security
-4. Prompt injection threat model
-5. RAG security patterns
+2. CloudTrail detection examples
+3. API security checklist
+4. API threat model
+5. Prompt injection and RAG security
+
+Output:
+
+- Cloud checklist
+- API threat model
+- AI evaluation table
 
 ## Path 5 — Automation and Architecture
 
-1. Security enrichment pipeline design
-2. SOAR workflow patterns
-3. SOC reference architecture
-4. Zero Trust reference architecture
-5. Autonomous security systems
+1. Enrichment pipeline design
+2. Example enrichment workflow
+3. SOC architecture
+4. Zero Trust architecture
+5. Autonomous SOC reference model
 
-## Practice Model
+Output:
 
-For each topic:
-
-1. Read the concept page.
-2. Create a checklist or playbook.
-3. Map detection opportunities.
-4. Build safe sample data.
-5. Automate one repeatable step.
-6. Write lessons learned.
+- Enrichment workflow
+- Architecture diagram
+- Automation backlog

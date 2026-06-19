@@ -1,0 +1,38 @@
+{
+  "id": "DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+  "name": "Kubernetes Cluster Admin Binding Created",
+  "status": "experimental",
+  "hypothesis": "Privilege escalation may involve creating cluster-admin role bindings.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "kubernetes_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "verb",
+    "resource",
+    "actor",
+    "role"
+  ],
+  "false_positives": [
+    "cluster bootstrap"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/kubernetes/cluster-admin-binding-created.md",
+  "test_case_id": "TEST-DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+  "logic": "create rolebinding/clusterrolebinding with cluster-admin",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

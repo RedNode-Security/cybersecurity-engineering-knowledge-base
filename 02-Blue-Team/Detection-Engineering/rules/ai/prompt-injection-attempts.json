@@ -1,0 +1,37 @@
+{
+  "id": "DET-AI-PROMPT_INJECTION_ATTEMPTS",
+  "name": "Prompt Injection Attempt Pattern",
+  "status": "experimental",
+  "hypothesis": "Repeated prompt injection attempts may indicate abuse or testing.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "llm_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "prompt_category",
+    "policy_result"
+  ],
+  "false_positives": [
+    "approved AI red-team test"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/ai/prompt-injection-attempts.md",
+  "test_case_id": "TEST-DET-AI-PROMPT_INJECTION_ATTEMPTS",
+  "logic": "instruction_override attempts exceed threshold",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+  "name": "AWS KMS Key Policy Changed",
+  "status": "experimental",
+  "hypothesis": "Key policy changes can affect access to encrypted data.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "aws_cloudtrail"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "keyId",
+    "actor"
+  ],
+  "false_positives": [
+    "key administration"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-kms-key-policy-changed.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+  "logic": "PutKeyPolicy on sensitive key by unexpected actor",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+  "name": "AWS Access Key Created for Rare User",
+  "status": "experimental",
+  "hypothesis": "Persistence may involve new access key creation for a rarely used identity.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "aws_cloudtrail",
+    "identity_inventory"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "userIdentity.arn"
+  ],
+  "false_positives": [
+    "key rotation",
+    "new workload"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-rare-access-key-created.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+  "logic": "CreateAccessKey and rare_for_identity",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

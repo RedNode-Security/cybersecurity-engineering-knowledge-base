@@ -1,0 +1,15 @@
+[
+  {
+    "timestamp": "2026-06-18T14:00:00Z",
+    "user": "analyst@example.com",
+    "query_id": "query-001",
+    "retrieved_document_ids": [
+      "doc-policy-001",
+      "doc-ticket-002"
+    ],
+    "sensitive_collection_accessed": false,
+    "tool_calls": [],
+    "policy_result": "allowed",
+    "training_note": "Synthetic RAG audit event."
+  }
+]

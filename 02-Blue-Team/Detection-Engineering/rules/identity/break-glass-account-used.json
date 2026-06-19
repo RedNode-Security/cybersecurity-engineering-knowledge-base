@@ -1,0 +1,38 @@
+{
+  "id": "DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+  "name": "Break-Glass Account Used",
+  "status": "experimental",
+  "hypothesis": "Break-glass account usage should be rare and explicitly approved.",
+  "severity": "critical",
+  "confidence": "high",
+  "data_sources": [
+    "identity_signin_logs",
+    "admin_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "application",
+    "action"
+  ],
+  "false_positives": [
+    "scheduled emergency access test"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/break-glass-account-used.md",
+  "test_case_id": "TEST-DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+  "logic": "signin where user in break_glass_accounts",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

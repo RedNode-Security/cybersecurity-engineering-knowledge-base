@@ -1,0 +1,40 @@
+{
+  "id": "DET-LINUX-NEW_SUDO_USER_CREATED",
+  "name": "New Sudo-Capable User Created",
+  "status": "experimental",
+  "hypothesis": "Privilege escalation may involve creating a sudo-capable user.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "linux_auth_logs",
+    "linux_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "actor",
+    "target_user",
+    "group"
+  ],
+  "false_positives": [
+    "onboarding",
+    "break-glass test"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/linux/new-sudo-user-created.md",
+  "test_case_id": "TEST-DET-LINUX-NEW_SUDO_USER_CREATED",
+  "logic": "user_created join group_add group in sudo_groups",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

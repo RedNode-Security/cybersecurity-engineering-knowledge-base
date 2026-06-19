@@ -10,37 +10,57 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Detection Engineering
 
 ## Overview
 
-Detection engineering is the structured process of turning threat knowledge into reliable, testable, and maintainable detections.
+Detection engineering converts threat knowledge into repeatable security
+analytics. A detection should be treated like an engineering artifact: documented,
+reviewed, tested, tuned, owned, and retired when stale.
 
 ## Detection Lifecycle
 
-1. Identify threat behavior
-2. Define detection hypothesis
-3. Map required telemetry
-4. Build query or rule
-5. Validate with safe test data
-6. Tune false positives
-7. Document triage and response
-8. Monitor performance
-9. Retire or update when obsolete
+```text
+Behavior → Hypothesis → Telemetry → Logic → Test Data → Tuning → Triage → Metrics → Review
+```
 
-## Detection Quality Checklist
+## Local Pages
 
-- [ ] Clear detection hypothesis
-- [ ] Mapped to ATT&CK or internal behavior taxonomy
-- [ ] Required log sources documented
-- [ ] False positives listed
-- [ ] Triage steps included
-- [ ] Severity and confidence defined
-- [ ] Test method documented
-- [ ] Owner and review date assigned
+- [Detection Engineering Methodology](detection-engineering-methodology.md)
+- [Detection-as-Code Lifecycle](detection-as-code-lifecycle.md)
+- [Detection Rule Examples](detection-rule-examples.md)
+- [Windows Authentication Detection](windows-authentication-detection.md)
+- [Sample Detection Hypothesis](sample-detection-hypothesis.md)
 
-## Starter Artifacts
+## Detection Artifact Standard
 
-- Use [`../../99-Templates/detection-rule-template.md`](../../99-Templates/detection-rule-template.md)
-- Add detection notes under this directory
-- Link related incident response playbooks
+| Section | Required content |
+|---|---|
+| Hypothesis | What behavior is expected? |
+| Telemetry | Which logs and fields are required? |
+| Logic | Query, pseudocode, or rule behavior |
+| False positives | Known benign patterns |
+| Triage | What analyst should do next |
+| Response | Containment or escalation options |
+| Testing | Safe validation method |
+| Ownership | Owner and review date |
+
+## Example Detection Review Questions
+
+- Does the logic actually match the hypothesis?
+- Can the required logs be joined reliably?
+- What legitimate business processes will trigger it?
+- Does the alert include enough context for triage?
+- What response action is appropriate?
+- How will we know if this detection becomes stale?
+
+## Maturity Path
+
+1. Document detection hypotheses.
+2. Build queries manually.
+3. Add sample events.
+4. Add peer review.
+5. Add detection-as-code metadata.
+6. Add automated validation.
+7. Add metrics and lifecycle review.

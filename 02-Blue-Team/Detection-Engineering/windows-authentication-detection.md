@@ -10,114 +10,115 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Windows Authentication Detection
 
 ## Overview
 
-Windows authentication events provide high-value signals for account misuse, brute force activity, lateral movement, privilege abuse, and suspicious administrative behavior.
+Windows authentication logs are central to detecting credential misuse, password
+attacks, lateral movement, privilege escalation, and unauthorized administrative
+activity.
 
-## Why It Matters
+## Log Sources
 
-Identity is often the control plane of an enterprise environment. When an account is compromised, authentication logs are usually among the first data sources that reveal unusual access.
-
-## Key Telemetry
-
-| Source | Examples |
-|---|---|
-| Windows Security Event Log | Logon, logoff, credential validation, account changes |
-| Domain Controller Logs | Kerberos, NTLM, account lockouts, group changes |
-| Endpoint Telemetry | Process lineage, network connections, command execution |
-| Identity Provider Logs | MFA, conditional access, risky sign-ins |
-| VPN / Proxy Logs | Remote access context |
-
-## Common Windows Event IDs
-
-| Event ID | Meaning | Detection Use |
+| Source | Events | Value |
 |---|---|---|
-| 4624 | Successful logon | New location, unusual logon type, rare host access |
-| 4625 | Failed logon | Password guessing, spraying, misconfigured services |
-| 4634 | Logoff | Session duration context |
-| 4648 | Explicit credentials used | Run-as behavior, lateral movement context |
+| Domain Controller Security logs | Kerberos, NTLM, group changes | Domain-level identity evidence |
+| Endpoint Security logs | Local logon and local group changes | Host-level access evidence |
+| PowerShell logs | Script execution after logon | Post-authentication activity |
+| EDR | Process and network context | Confirms what happened after access |
+| VPN and IdP | Remote access and MFA | Adds user and location context |
+
+## Important Event IDs
+
+| Event ID | Meaning | Detection use |
+|---|---|---|
+| 4624 | Successful logon | New source, unusual logon type, rare host access |
+| 4625 | Failed logon | Password guessing and spraying |
+| 4648 | Explicit credentials used | Run-as and lateral movement context |
 | 4672 | Special privileges assigned | Privileged logon monitoring |
 | 4720 | User account created | Unauthorized account creation |
-| 4728 | Member added to global security group | Privilege escalation monitoring |
-| 4732 | Member added to local security group | Local admin changes |
+| 4728 | Added to global security group | Privilege escalation monitoring |
+| 4732 | Added to local security group | Local admin changes |
 | 4740 | Account locked out | Password attack or user issue |
-| 4768 | Kerberos authentication ticket requested | Domain authentication baseline |
-| 4769 | Kerberos service ticket requested | Service access and lateral movement context |
+| 4768 | Kerberos TGT requested | Domain authentication baseline |
+| 4769 | Kerberos service ticket requested | Service access patterns |
 | 4771 | Kerberos pre-authentication failed | Password guessing signal |
 | 4776 | NTLM credential validation | Legacy authentication monitoring |
 
-## Detection Hypotheses
+## Logon Types Worth Understanding
 
-### Unusual Logon Followed by Privileged Activity
+| Logon type | Meaning | Investigation value |
+|---|---|---|
+| 2 | Interactive | Console login |
+| 3 | Network | Access to shared resources or remote services |
+| 4 | Batch | Scheduled task or batch job |
+| 5 | Service | Service startup |
+| 7 | Unlock | Workstation unlock |
+| 10 | RemoteInteractive | RDP or terminal services |
+| 11 | CachedInteractive | Cached domain credential use |
 
-If a compromised account is used for privilege abuse, logs may show unusual authentication context followed by privileged actions.
+## Detection Scenario — Password Spray Followed by Success
 
-Signals:
+Synthetic sequence:
 
-- New source host or geography
-- Rare logon type for the user
-- Privileged event soon after logon
-- Access to sensitive server or admin endpoint
+```text
+10:00 source=203.0.113.50 user=a.user result=failure event=4625
+10:01 source=203.0.113.50 user=b.user result=failure event=4625
+10:02 source=203.0.113.50 user=c.user result=failure event=4625
+10:07 source=203.0.113.50 user=b.user result=success event=4624
+```
 
-### Password Spraying
+Triage questions:
 
-If an actor attempts password spraying, logs may show many accounts with failed logons from the same source or pattern over a time window.
+- How many unique users failed from the source?
+- Did any privileged account fail or succeed?
+- Was MFA challenged or satisfied?
+- Is the source a VPN, proxy, scanner, or unknown internet address?
+- What did the successful account do afterward?
 
-Signals:
+## Detection Scenario — Privileged Group Change
 
-- Many usernames with few failures each
-- Same source IP, host, VPN, or user agent
-- Failures followed by a success
-- Activity outside business hours
+Synthetic event:
 
-### Privileged Group Modification
+```json
+{
+  "event_id": 4728,
+  "actor": "EXAMPLE\helpdesk01",
+  "target_user": "EXAMPLE\temp.admin",
+  "target_group": "Domain Admins",
+  "host": "dc01.example.com",
+  "timestamp": "2026-06-18T12:10:00Z"
+}
+```
 
-If an account is used for privilege escalation, logs may show group membership changes involving privileged groups.
+Triage questions:
 
-Signals:
-
-- Member added to privileged group
-- Change made by unusual admin
-- Change outside approved change window
-- Group addition followed by privileged logon
+- Is `helpdesk01` allowed to modify this group?
+- Was `temp.admin` newly created?
+- Was the change approved?
+- Did the target account authenticate after the change?
+- Did the actor authenticate from a normal workstation?
 
 ## False Positives
 
-- Helpdesk password resets
-- New employee onboarding
+- Helpdesk password reset workflows
+- Vulnerability scanners
+- Service account password changes
 - Admin maintenance windows
 - VPN egress changes
-- Service account misconfiguration
-- Vulnerability scanner authentication failures
-
-## Triage Workflow
-
-1. Identify account, source host, destination host, and logon type.
-2. Determine whether the source and destination are normal for the account.
-3. Check whether the user recently changed role, device, location, or VPN path.
-4. Review events before and after the authentication.
-5. Check for privileged group changes, explicit credential use, or unusual process execution.
-6. Escalate if activity cannot be explained by approved business context.
+- New device deployments
 
 ## Response Actions
 
-- Disable or reset the account if compromise is likely
-- Revoke sessions where supported
-- Remove unauthorized group membership
-- Isolate affected endpoint if endpoint compromise is suspected
-- Preserve logs and timeline evidence
-- Review similar activity for related accounts
-
-## Automation Strategy
-
-- Enrich alerts with user role, asset criticality, and historical baseline
-- Join identity events with endpoint and VPN data
-- Auto-create cases for privileged group modifications
-- Require human approval for account disablement until confidence is high
+- Reset or disable account if compromise is likely.
+- Revoke sessions where supported.
+- Remove unauthorized group memberships.
+- Isolate affected endpoint if endpoint compromise is suspected.
+- Preserve domain controller and endpoint logs.
+- Hunt for the same source, account, or pattern across the environment.
 
 ## References
 
-- Microsoft Windows Security Auditing documentation
-- MITRE ATT&CK Credential Access and Lateral Movement tactics: https://attack.mitre.org/
+- Microsoft audit event documentation: https://learn.microsoft.com/windows/security/threat-protection/auditing/audit-events
+- MITRE ATT&CK Credential Access: https://attack.mitre.org/tactics/TA0006/

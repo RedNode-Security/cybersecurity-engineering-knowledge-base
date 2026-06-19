@@ -1,0 +1,39 @@
+{
+  "id": "DET-NETWORK-LARGE_UPLOAD_RARE_DESTINATION",
+  "name": "Large Upload to Rare Destination",
+  "status": "experimental",
+  "hypothesis": "Data exfiltration may show large uploads to rare destinations.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "proxy_logs",
+    "network_flow_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "destination",
+    "bytes_out"
+  ],
+  "false_positives": [
+    "backup",
+    "approved data transfer"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/network/large-upload-rare-destination.md",
+  "test_case_id": "TEST-DET-NETWORK-LARGE_UPLOAD_RARE_DESTINATION",
+  "logic": "bytes_out > baseline_p95 and destination rare",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

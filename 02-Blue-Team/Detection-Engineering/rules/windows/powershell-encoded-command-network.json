@@ -1,0 +1,38 @@
+{
+  "id": "DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+  "name": "PowerShell Encoded Command With Network",
+  "status": "experimental",
+  "hypothesis": "Suspicious script execution may use encoded command and network access.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "process",
+    "command_line",
+    "network_connection"
+  ],
+  "false_positives": [
+    "endpoint management"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/powershell-encoded-command-network.md",
+  "test_case_id": "TEST-DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+  "logic": "powershell encoded_command and network_connection and not approved_tool",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

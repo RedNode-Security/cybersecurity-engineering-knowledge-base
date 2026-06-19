@@ -1,0 +1,39 @@
+{
+  "id": "DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+  "name": "Archive Created Before Large Upload",
+  "status": "experimental",
+  "hypothesis": "Data staging may involve archive creation followed by upload.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "edr_file_events",
+    "proxy_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "archive_path",
+    "bytes_out"
+  ],
+  "false_positives": [
+    "backup job",
+    "approved export"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/archive-created-before-upload.md",
+  "test_case_id": "TEST-DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+  "logic": "archive_created join large_upload within 30m",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+  "name": "AWS Security Group Admin Port Opened Publicly",
+  "status": "experimental",
+  "hypothesis": "Public admin port exposure increases attack surface.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "aws_cloudtrail",
+    "cloud_asset_inventory"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "groupId",
+    "cidr",
+    "port"
+  ],
+  "false_positives": [
+    "temporary admin access",
+    "public web service"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-public-security-group-admin-port.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+  "logic": "security_group ingress cidr public and port in admin_ports",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

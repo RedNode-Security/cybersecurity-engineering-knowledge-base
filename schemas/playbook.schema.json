@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Incident Response Playbook Metadata",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "owner",
+    "severity_model",
+    "trigger_conditions",
+    "evidence_sources"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "severity_model": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trigger_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

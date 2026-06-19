@@ -1,51 +1,29 @@
 # Project Status
 
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 ## Current State
 
-The repository has moved from initial foundation into a Phase 2 candidate state.
+The repository is now a reference-grade cybersecurity engineering encyclopedia
+candidate with a serious detection reference library.
 
-Completed foundation items:
+## Detection Library State
 
-- Domain folder structure
-- Documentation templates
-- Content safety policy
-- Taxonomy
-- Contribution guide
-- IOC schema and sample
-- Validation scripts
-- GitHub issue templates
-- GitHub Actions validation workflow
-- Dual-license model selected and documented
+- Reference detections: 66
+- Domains covered: identity, Windows, Linux, network, cloud, Kubernetes, application, AI
+- Each reference detection includes metadata, logic, sample positive event, sample benign event, triage, response, and test case mapping.
+- Detection metadata validation, reference validation, JSON parsing, link checks, and Markdown lint all pass.
 
-Phase 2 starter items added:
+## Publication State
 
-- Detection engineering methodology
-- Detection-as-code lifecycle
-- Windows authentication detection guidance
-- SOC alert triage workflow
-- Account compromise incident response playbook
-- Threat hunting methodology
-- Log source reference matrix
+A curated published core remains in `PUBLISHED_INDEX.md`. The detection library is
+mostly draft/reference material and should be promoted in reviewed batches after
+local SIEM mapping and testing.
 
-## Immediate Priorities
+## Next Work
 
-1. Confirm GitHub Actions pass on `main`.
-2. Convert `BACKLOG.md` items into GitHub issues.
-3. Promote the strongest pages from `draft` to `reviewed` after source review.
-4. Add references to primary vendor documentation where required.
-5. Create GitHub labels from `.github/labels.yml` if desired.
-
-## Quality Gates
-
-Before marking a document as `published`:
-
-- [ ] No secrets or sensitive environment data
-- [ ] No unsafe operational exploit guidance
-- [ ] References added
-- [ ] Defensive value is explicit
-- [ ] Detection guidance includes false positives and limitations
-- [ ] Automation opportunity is documented
-- [ ] Markdown renders correctly
-- [ ] Repository validation passes
+1. Convert top 10 identity detections into SIEM-specific examples.
+2. Add more environment-specific false positives after practical testing.
+3. Add unit-style detection tests for positive and benign sample records.
+4. Add coverage mapping to MITRE ATT&CK techniques where appropriate.
+5. Add real-world sanitized case studies for the highest-value detections.

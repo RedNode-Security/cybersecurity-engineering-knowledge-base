@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+  "name": "Azure High-Risk App Consent",
+  "status": "experimental",
+  "hypothesis": "High-risk OAuth consent may expose mail, files, or directory data.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "azure_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "app_id",
+    "scopes"
+  ],
+  "false_positives": [
+    "approved SaaS app"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/azure-high-risk-app-consent.md",
+  "test_case_id": "TEST-DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+  "logic": "app consent high_risk_scopes and unverified publisher",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

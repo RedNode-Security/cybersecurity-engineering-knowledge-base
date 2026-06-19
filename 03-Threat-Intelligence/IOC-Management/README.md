@@ -10,32 +10,45 @@ difficulty: beginner
 safe_publication: true
 ---
 
+
 # IOC Management
 
 ## Overview
 
-Indicators of compromise are observable artifacts associated with suspicious or malicious activity. They are useful when context, confidence, source, and expiration are maintained.
+Indicators of compromise are observable values associated with suspicious or
+malicious activity. They are useful only when they include source, context,
+confidence, handling guidance, and expiration.
 
-## IOC Quality Fields
+## Local Pages
 
-- Type
-- Value
-- Source
-- Confidence
-- First seen
-- Last seen
-- Context
-- Tags
-- Expiration or review date
+- [IOC Lifecycle and Scoring](ioc-lifecycle-and-scoring.md)
+- [IOC Examples](ioc-examples.md)
+- [Sample IOC JSON](../samples/ioc-sample.json)
 
-## Operational Guidance
+## IOC Fields
 
-- Treat IOCs as perishable intelligence
-- Prefer behavior-based detection when possible
-- Track source reliability
-- Avoid adding low-confidence IOCs directly to blocking controls
-- Document false positives
+| Field | Purpose |
+|---|---|
+| Type | IP, domain, URL, hash, email, user agent, etc. |
+| Value | Observable value |
+| Source | Where it came from |
+| Confidence | Low, medium, or high |
+| Context | Why it matters |
+| First seen | Initial observation |
+| Last seen | Most recent observation |
+| Expiration | Review or removal date |
+| Handling | Enrich, hunt, alert, block, or correlate |
 
-## Sample
+## Handling Decision
 
-See [`../samples/ioc-sample.json`](../samples/ioc-sample.json).
+| Confidence | Suggested use |
+|---|---|
+| Low | Enrichment or hunting only |
+| Medium | Alerting after false-positive review |
+| High | Alerting or blocking after business impact review |
+
+## Example Decision
+
+```text
+A domain from a trusted phishing report with recent sightings and low false-positive risk can be used for alerting. A shared hosting IP with unclear context should be enrichment-only.
+```

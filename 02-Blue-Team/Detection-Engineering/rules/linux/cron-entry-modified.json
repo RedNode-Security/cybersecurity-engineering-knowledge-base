@@ -1,0 +1,38 @@
+{
+  "id": "DET-LINUX-CRON_ENTRY_MODIFIED",
+  "name": "Cron Entry Modified by Unusual User",
+  "status": "experimental",
+  "hypothesis": "Persistence may involve cron modifications.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "linux_audit_logs",
+    "edr_file_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "user",
+    "file_path"
+  ],
+  "false_positives": [
+    "scheduled maintenance"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/linux/cron-entry-modified.md",
+  "test_case_id": "TEST-DET-LINUX-CRON_ENTRY_MODIFIED",
+  "logic": "cron_path modified by unusual user",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

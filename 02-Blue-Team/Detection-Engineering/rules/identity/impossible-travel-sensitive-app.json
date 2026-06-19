@@ -1,0 +1,39 @@
+{
+  "id": "DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+  "name": "Impossible Travel to Sensitive App",
+  "status": "experimental",
+  "hypothesis": "A compromised account may access sensitive applications from geographically inconsistent sources.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_signin_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "source_ip",
+    "geo",
+    "application"
+  ],
+  "false_positives": [
+    "VPN egress",
+    "business travel"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/impossible-travel-sensitive-app.md",
+  "test_case_id": "TEST-DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+  "logic": "impossible_travel and application in sensitive_apps",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

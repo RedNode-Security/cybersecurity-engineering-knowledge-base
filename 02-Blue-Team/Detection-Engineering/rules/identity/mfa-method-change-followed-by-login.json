@@ -1,0 +1,39 @@
+{
+  "id": "DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+  "name": "MFA Method Change Followed by New Login",
+  "status": "experimental",
+  "hypothesis": "Account takeover may involve MFA method change followed by login from a new source.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_audit_logs",
+    "identity_signin_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "action",
+    "source_ip"
+  ],
+  "false_positives": [
+    "helpdesk reset",
+    "new phone enrollment"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/mfa-method-change-followed-by-login.md",
+  "test_case_id": "TEST-DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+  "logic": "mfa_method_change(user) join signin(user, source_is_new=true) within 24h",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

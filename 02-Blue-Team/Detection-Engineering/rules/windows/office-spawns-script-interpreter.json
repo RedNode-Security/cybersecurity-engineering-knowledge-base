@@ -1,0 +1,38 @@
+{
+  "id": "DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+  "name": "Office Spawns Script Interpreter",
+  "status": "experimental",
+  "hypothesis": "Phishing execution may involve Office spawning script interpreters.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "parent_process",
+    "process",
+    "command_line"
+  ],
+  "false_positives": [
+    "approved macro automation"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/office-spawns-script-interpreter.md",
+  "test_case_id": "TEST-DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+  "logic": "parent in office_apps and child in script_interpreters",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

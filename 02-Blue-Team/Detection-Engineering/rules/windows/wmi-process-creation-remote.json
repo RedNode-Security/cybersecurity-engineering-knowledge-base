@@ -1,0 +1,40 @@
+{
+  "id": "DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+  "name": "Remote WMI Process Creation",
+  "status": "experimental",
+  "hypothesis": "Lateral movement may use remote WMI process creation.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "edr_process_events",
+    "windows_security_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "source_host",
+    "process",
+    "parent_process"
+  ],
+  "false_positives": [
+    "endpoint management",
+    "admin automation"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/wmi-process-creation-remote.md",
+  "test_case_id": "TEST-DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+  "logic": "parent_process=wmiprvse.exe and source_host not admin_jump_hosts",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "DET-IDENTITY-0001",
+  "name": "Password Spray Followed by Success",
+  "status": "experimental",
+  "hypothesis": "Password spraying may show many failed logons across users from one source followed by a successful authentication.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_signin_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "source_ip",
+    "user",
+    "result"
+  ],
+  "false_positives": [
+    "vulnerability scanner",
+    "misconfigured service",
+    "shared VPN egress"
+  ],
+  "triage_steps": [
+    "Identify source IP",
+    "Review affected users",
+    "Check for successful authentication",
+    "Review MFA results"
+  ],
+  "response_actions": [
+    "Reset affected credentials if compromise confirmed",
+    "Revoke sessions",
+    "Hunt for related activity"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-18"
+}

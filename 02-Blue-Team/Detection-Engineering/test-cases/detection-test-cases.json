@@ -1,0 +1,662 @@
+[
+  {
+    "test_id": "TEST-DET-IDENTITY-PASSWORD_SPRAY_FOLLOWED_BY_SUCCESS",
+    "detection_id": "DET-IDENTITY-PASSWORD_SPRAY_FOLLOWED_BY_SUCCESS",
+    "name": "Password Spray Followed by Success",
+    "positive_event_id": "evt-id-001",
+    "benign_event_id": "evt-id-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+    "detection_id": "DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+    "name": "Risky Sign-in Followed by Privileged Action",
+    "positive_event_id": "evt-id-002",
+    "benign_event_id": "evt-id-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+    "detection_id": "DET-IDENTITY-MFA_METHOD_CHANGE_FOLLOWED_BY_LOGIN",
+    "name": "MFA Method Change Followed by New Login",
+    "positive_event_id": "evt-id-003",
+    "benign_event_id": "evt-id-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+    "detection_id": "DET-IDENTITY-SUSPICIOUS_OAUTH_CONSENT",
+    "name": "Suspicious OAuth Consent",
+    "positive_event_id": "evt-id-004",
+    "benign_event_id": "evt-id-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+    "detection_id": "DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+    "name": "Privileged Role Assignment Without Change Context",
+    "positive_event_id": "evt-id-005",
+    "benign_event_id": "evt-id-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+    "detection_id": "DET-IDENTITY-IMPOSSIBLE_TRAVEL_SENSITIVE_APP",
+    "name": "Impossible Travel to Sensitive App",
+    "positive_event_id": "evt-id-006",
+    "benign_event_id": "evt-id-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+    "detection_id": "DET-IDENTITY-BREAK_GLASS_ACCOUNT_USED",
+    "name": "Break-Glass Account Used",
+    "positive_event_id": "evt-id-007",
+    "benign_event_id": "evt-id-benign-007",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-DISABLED_ACCOUNT_SUCCESSFUL_LOGIN",
+    "detection_id": "DET-IDENTITY-DISABLED_ACCOUNT_SUCCESSFUL_LOGIN",
+    "name": "Disabled Account Successful Login",
+    "positive_event_id": "evt-id-008",
+    "benign_event_id": "evt-id-benign-008",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+    "detection_id": "DET-IDENTITY-MULTIPLE_MFA_PROMPTS_USER",
+    "name": "Multiple MFA Prompts for User",
+    "positive_event_id": "evt-id-009",
+    "benign_event_id": "evt-id-benign-009",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-SERVICE_ACCOUNT_INTERACTIVE_LOGIN",
+    "detection_id": "DET-IDENTITY-SERVICE_ACCOUNT_INTERACTIVE_LOGIN",
+    "name": "Service Account Interactive Login",
+    "positive_event_id": "evt-id-010",
+    "benign_event_id": "evt-id-benign-010",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-NEW_DEVICE_SENSITIVE_ACCESS",
+    "detection_id": "DET-IDENTITY-NEW_DEVICE_SENSITIVE_ACCESS",
+    "name": "New Device Sensitive Access",
+    "positive_event_id": "evt-id-011",
+    "benign_event_id": "evt-id-benign-011",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+    "detection_id": "DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+    "name": "Token Refresh After User Disabled",
+    "positive_event_id": "evt-id-012",
+    "benign_event_id": "evt-id-benign-012",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-PRIVILEGED_GROUP_MEMBERSHIP_CHANGE",
+    "detection_id": "DET-WINDOWS-PRIVILEGED_GROUP_MEMBERSHIP_CHANGE",
+    "name": "Privileged Group Membership Change",
+    "positive_event_id": "evt-win-001",
+    "benign_event_id": "evt-win-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-EXPLICIT_CREDENTIALS_RARE_HOST",
+    "detection_id": "DET-WINDOWS-EXPLICIT_CREDENTIALS_RARE_HOST",
+    "name": "Explicit Credentials Used on Rare Host",
+    "positive_event_id": "evt-win-002",
+    "benign_event_id": "evt-win-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-POWERSHELL_AFTER_RISKY_LOGON",
+    "detection_id": "DET-WINDOWS-POWERSHELL_AFTER_RISKY_LOGON",
+    "name": "PowerShell After Risky Logon",
+    "positive_event_id": "evt-win-003",
+    "benign_event_id": "evt-win-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+    "detection_id": "DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+    "name": "New Service on Sensitive Host",
+    "positive_event_id": "evt-win-004",
+    "benign_event_id": "evt-win-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+    "detection_id": "DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+    "name": "Scheduled Task Created by Unusual User",
+    "positive_event_id": "evt-win-005",
+    "benign_event_id": "evt-win-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+    "detection_id": "DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+    "name": "LSASS Access by Unusual Process",
+    "positive_event_id": "evt-win-006",
+    "benign_event_id": "evt-win-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+    "detection_id": "DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+    "name": "Office Spawns Script Interpreter",
+    "positive_event_id": "evt-win-007",
+    "benign_event_id": "evt-win-benign-007",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-NEW_LOCAL_ADMIN_ADDED",
+    "detection_id": "DET-WINDOWS-NEW_LOCAL_ADMIN_ADDED",
+    "name": "New Local Administrator Added",
+    "positive_event_id": "evt-win-008",
+    "benign_event_id": "evt-win-benign-008",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+    "detection_id": "DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+    "name": "Security Tool Service Stopped",
+    "positive_event_id": "evt-win-009",
+    "benign_event_id": "evt-win-benign-009",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+    "detection_id": "DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+    "name": "Remote WMI Process Creation",
+    "positive_event_id": "evt-win-010",
+    "benign_event_id": "evt-win-benign-010",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+    "detection_id": "DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+    "name": "Archive Created Before Large Upload",
+    "positive_event_id": "evt-win-011",
+    "benign_event_id": "evt-win-benign-011",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+    "detection_id": "DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+    "name": "PowerShell Encoded Command With Network",
+    "positive_event_id": "evt-win-012",
+    "benign_event_id": "evt-win-benign-012",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+    "detection_id": "DET-LINUX-SSH_FAILURES_FOLLOWED_BY_SUCCESS",
+    "name": "SSH Failures Followed by Success",
+    "positive_event_id": "evt-linux-001",
+    "benign_event_id": "evt-linux-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-SUDOERS_FILE_MODIFIED",
+    "detection_id": "DET-LINUX-SUDOERS_FILE_MODIFIED",
+    "name": "Sudoers File Modified",
+    "positive_event_id": "evt-linux-002",
+    "benign_event_id": "evt-linux-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-AUTHORIZED_KEYS_MODIFIED",
+    "detection_id": "DET-LINUX-AUTHORIZED_KEYS_MODIFIED",
+    "name": "Authorized Keys Modified",
+    "positive_event_id": "evt-linux-003",
+    "benign_event_id": "evt-linux-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+    "detection_id": "DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+    "name": "New Systemd Service Created",
+    "positive_event_id": "evt-linux-004",
+    "benign_event_id": "evt-linux-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-CRON_ENTRY_MODIFIED",
+    "detection_id": "DET-LINUX-CRON_ENTRY_MODIFIED",
+    "name": "Cron Entry Modified by Unusual User",
+    "positive_event_id": "evt-linux-005",
+    "benign_event_id": "evt-linux-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-LINUX-NEW_SUDO_USER_CREATED",
+    "detection_id": "DET-LINUX-NEW_SUDO_USER_CREATED",
+    "name": "New Sudo-Capable User Created",
+    "positive_event_id": "evt-linux-006",
+    "benign_event_id": "evt-linux-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-NEWLY_OBSERVED_DOMAIN_SENSITIVE_HOST",
+    "detection_id": "DET-NETWORK-NEWLY_OBSERVED_DOMAIN_SENSITIVE_HOST",
+    "name": "Newly Observed Domain From Sensitive Host",
+    "positive_event_id": "evt-net-001",
+    "benign_event_id": "evt-net-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-DNS_HIGH_ENTROPY_SUBDOMAINS",
+    "detection_id": "DET-NETWORK-DNS_HIGH_ENTROPY_SUBDOMAINS",
+    "name": "High Entropy DNS Subdomains",
+    "positive_event_id": "evt-net-002",
+    "benign_event_id": "evt-net-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-PROXY_EXECUTABLE_DOWNLOAD_RARE_DOMAIN",
+    "detection_id": "DET-NETWORK-PROXY_EXECUTABLE_DOWNLOAD_RARE_DOMAIN",
+    "name": "Executable Download From Rare Domain",
+    "positive_event_id": "evt-net-003",
+    "benign_event_id": "evt-net-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-LARGE_UPLOAD_RARE_DESTINATION",
+    "detection_id": "DET-NETWORK-LARGE_UPLOAD_RARE_DESTINATION",
+    "name": "Large Upload to Rare Destination",
+    "positive_event_id": "evt-net-004",
+    "benign_event_id": "evt-net-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-BEACONING_REGULAR_INTERVAL",
+    "detection_id": "DET-NETWORK-BEACONING_REGULAR_INTERVAL",
+    "name": "Regular Interval Beaconing",
+    "positive_event_id": "evt-net-005",
+    "benign_event_id": "evt-net-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-NETWORK-ANONYMIZING_NETWORK_FROM_SERVER",
+    "detection_id": "DET-NETWORK-ANONYMIZING_NETWORK_FROM_SERVER",
+    "name": "Anonymizing Network Access From Server",
+    "positive_event_id": "evt-net-006",
+    "benign_event_id": "evt-net-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+    "detection_id": "DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+    "name": "AWS Root Account Use",
+    "positive_event_id": "evt-cloud-001",
+    "benign_event_id": "evt-cloud-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+    "detection_id": "DET-CLOUD-AWS_RARE_ACCESS_KEY_CREATED",
+    "name": "AWS Access Key Created for Rare User",
+    "positive_event_id": "evt-cloud-002",
+    "benign_event_id": "evt-cloud-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_CLOUDTRAIL_TAMPERING",
+    "detection_id": "DET-CLOUD-AWS_CLOUDTRAIL_TAMPERING",
+    "name": "AWS CloudTrail Logging Tampering",
+    "positive_event_id": "evt-cloud-003",
+    "benign_event_id": "evt-cloud-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+    "detection_id": "DET-CLOUD-AWS_ADMIN_POLICY_ATTACHMENT",
+    "name": "AWS Administrator Policy Attachment",
+    "positive_event_id": "evt-cloud-004",
+    "benign_event_id": "evt-cloud-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+    "detection_id": "DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+    "name": "AWS GuardDuty Disabled",
+    "positive_event_id": "evt-cloud-005",
+    "benign_event_id": "evt-cloud-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+    "detection_id": "DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+    "name": "AWS S3 Public Access Block Disabled",
+    "positive_event_id": "evt-cloud-006",
+    "benign_event_id": "evt-cloud-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+    "detection_id": "DET-CLOUD-AWS_KMS_KEY_POLICY_CHANGED",
+    "name": "AWS KMS Key Policy Changed",
+    "positive_event_id": "evt-cloud-007",
+    "benign_event_id": "evt-cloud-benign-007",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+    "detection_id": "DET-CLOUD-AWS_PUBLIC_SECURITY_GROUP_ADMIN_PORT",
+    "name": "AWS Security Group Admin Port Opened Publicly",
+    "positive_event_id": "evt-cloud-008",
+    "benign_event_id": "evt-cloud-benign-008",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AZURE_SERVICE_PRINCIPAL_CREDENTIAL_ADDED",
+    "detection_id": "DET-CLOUD-AZURE_SERVICE_PRINCIPAL_CREDENTIAL_ADDED",
+    "name": "Azure Service Principal Credential Added",
+    "positive_event_id": "evt-cloud-009",
+    "benign_event_id": "evt-cloud-benign-009",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+    "detection_id": "DET-CLOUD-AZURE_HIGH_RISK_APP_CONSENT",
+    "name": "Azure High-Risk App Consent",
+    "positive_event_id": "evt-cloud-010",
+    "benign_event_id": "evt-cloud-benign-010",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+    "detection_id": "DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+    "name": "Azure Privileged Role Assignment",
+    "positive_event_id": "evt-cloud-011",
+    "benign_event_id": "evt-cloud-benign-011",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+    "detection_id": "DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+    "name": "Azure Conditional Access Policy Disabled",
+    "positive_event_id": "evt-cloud-012",
+    "benign_event_id": "evt-cloud-benign-012",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+    "detection_id": "DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+    "name": "Kubernetes Cluster Admin Binding Created",
+    "positive_event_id": "evt-k8s-001",
+    "benign_event_id": "evt-k8s-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-SECRET_READ_UNUSUAL_SERVICE_ACCOUNT",
+    "detection_id": "DET-KUBERNETES-SECRET_READ_UNUSUAL_SERVICE_ACCOUNT",
+    "name": "Kubernetes Secret Read by Unusual Service Account",
+    "positive_event_id": "evt-k8s-002",
+    "benign_event_id": "evt-k8s-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+    "detection_id": "DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+    "name": "Kubernetes Privileged Pod Created",
+    "positive_event_id": "evt-k8s-003",
+    "benign_event_id": "evt-k8s-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+    "detection_id": "DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+    "name": "Kubernetes Exec in Sensitive Namespace",
+    "positive_event_id": "evt-k8s-004",
+    "benign_event_id": "evt-k8s-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-HOSTPATH_MOUNT_CREATED",
+    "detection_id": "DET-KUBERNETES-HOSTPATH_MOUNT_CREATED",
+    "name": "Kubernetes HostPath Mount Created",
+    "positive_event_id": "evt-k8s-005",
+    "benign_event_id": "evt-k8s-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-KUBERNETES-ADMISSION_DENIED_SPIKE",
+    "detection_id": "DET-KUBERNETES-ADMISSION_DENIED_SPIKE",
+    "name": "Kubernetes Admission Denied Spike",
+    "positive_event_id": "evt-k8s-006",
+    "benign_event_id": "evt-k8s-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-API_CROSS_TENANT_DENIALS",
+    "detection_id": "DET-APPLICATION-API_CROSS_TENANT_DENIALS",
+    "name": "API Cross-Tenant Authorization Denials",
+    "positive_event_id": "evt-app-001",
+    "benign_event_id": "evt-app-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+    "detection_id": "DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+    "name": "API Sensitive Data Export Spike",
+    "positive_event_id": "evt-app-002",
+    "benign_event_id": "evt-app-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-API_ADMIN_ACTION_NEW_SOURCE",
+    "detection_id": "DET-APPLICATION-API_ADMIN_ACTION_NEW_SOURCE",
+    "name": "API Admin Action from New Source",
+    "positive_event_id": "evt-app-003",
+    "benign_event_id": "evt-app-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-GRAPHQL_HIGH_COMPLEXITY_QUERY",
+    "detection_id": "DET-APPLICATION-GRAPHQL_HIGH_COMPLEXITY_QUERY",
+    "name": "GraphQL High Complexity Query",
+    "positive_event_id": "evt-app-004",
+    "benign_event_id": "evt-app-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-WEBHOOK_SECRET_ROTATION_FAILURE",
+    "detection_id": "DET-APPLICATION-WEBHOOK_SECRET_ROTATION_FAILURE",
+    "name": "Webhook Secret Rotation Failure",
+    "positive_event_id": "evt-app-005",
+    "benign_event_id": "evt-app-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+    "detection_id": "DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+    "name": "Repeated API Authorization Failures",
+    "positive_event_id": "evt-app-006",
+    "benign_event_id": "evt-app-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-LLM_TOOL_CALL_WITHOUT_APPROVAL",
+    "detection_id": "DET-AI-LLM_TOOL_CALL_WITHOUT_APPROVAL",
+    "name": "LLM Tool Call Without Required Approval",
+    "positive_event_id": "evt-ai-001",
+    "benign_event_id": "evt-ai-benign-001",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-RAG_SENSITIVE_COLLECTION_ACCESS",
+    "detection_id": "DET-AI-RAG_SENSITIVE_COLLECTION_ACCESS",
+    "name": "RAG Sensitive Collection Access",
+    "positive_event_id": "evt-ai-002",
+    "benign_event_id": "evt-ai-benign-002",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-AGENT_REPEATED_TOOL_FAILURE",
+    "detection_id": "DET-AI-AGENT_REPEATED_TOOL_FAILURE",
+    "name": "AI Agent Repeated Tool Failure",
+    "positive_event_id": "evt-ai-003",
+    "benign_event_id": "evt-ai-benign-003",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-PROMPT_INJECTION_ATTEMPTS",
+    "detection_id": "DET-AI-PROMPT_INJECTION_ATTEMPTS",
+    "name": "Prompt Injection Attempt Pattern",
+    "positive_event_id": "evt-ai-004",
+    "benign_event_id": "evt-ai-benign-004",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-HIDDEN_PROMPT_EXTRACTION_ATTEMPT",
+    "detection_id": "DET-AI-HIDDEN_PROMPT_EXTRACTION_ATTEMPT",
+    "name": "Hidden Prompt Extraction Attempt",
+    "positive_event_id": "evt-ai-005",
+    "benign_event_id": "evt-ai-benign-005",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  },
+  {
+    "test_id": "TEST-DET-AI-SENSITIVE_OUTPUT_REDACTION_SPIKE",
+    "detection_id": "DET-AI-SENSITIVE_OUTPUT_REDACTION_SPIKE",
+    "name": "Sensitive Output Redaction Spike",
+    "positive_event_id": "evt-ai-006",
+    "benign_event_id": "evt-ai-benign-006",
+    "expected_positive": true,
+    "expected_benign": false,
+    "notes": "Synthetic test case. Map fields to local schema before production use."
+  }
+]

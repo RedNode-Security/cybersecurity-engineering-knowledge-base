@@ -1,0 +1,39 @@
+{
+  "id": "DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+  "name": "Token Refresh After User Disabled",
+  "status": "experimental",
+  "hypothesis": "Compromised or stale sessions may continue after account disablement.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_token_logs",
+    "directory_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "token_event",
+    "account_status"
+  ],
+  "false_positives": [
+    "replication delay",
+    "application session caching"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/token-refresh-after-user-disabled.md",
+  "test_case_id": "TEST-DET-IDENTITY-TOKEN_REFRESH_AFTER_USER_DISABLED",
+  "logic": "token_refresh where account_status=disabled",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

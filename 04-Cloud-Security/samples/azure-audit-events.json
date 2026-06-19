@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2026-06-19T12:00:00Z",
+    "actor": "admin@example.com",
+    "action": "Add service principal credential",
+    "target": "example-app",
+    "result": "success"
+  },
+  {
+    "timestamp": "2026-06-19T12:05:00Z",
+    "actor": "admin@example.com",
+    "action": "Add member to privileged role",
+    "target": "user@example.com",
+    "result": "success"
+  }
+]

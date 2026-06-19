@@ -1,0 +1,40 @@
+{
+  "id": "DET-NETWORK-BEACONING_REGULAR_INTERVAL",
+  "name": "Regular Interval Beaconing",
+  "status": "experimental",
+  "hypothesis": "Command-and-control may produce regular interval connections.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "proxy_logs",
+    "dns_logs",
+    "network_flow_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "destination",
+    "interval"
+  ],
+  "false_positives": [
+    "monitoring agent",
+    "update checker"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/network/beaconing-regular-interval.md",
+  "test_case_id": "TEST-DET-NETWORK-BEACONING_REGULAR_INTERVAL",
+  "logic": "regular_interval connections to rare destination",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

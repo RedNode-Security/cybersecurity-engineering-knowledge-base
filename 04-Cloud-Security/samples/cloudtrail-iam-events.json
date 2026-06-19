@@ -1,0 +1,26 @@
+[
+  {
+    "eventTime": "2026-06-18T12:00:00Z",
+    "eventName": "CreateAccessKey",
+    "userIdentity": {
+      "type": "IAMUser",
+      "arn": "arn:aws:iam::123456789012:user/example-user"
+    },
+    "sourceIPAddress": "203.0.113.44",
+    "userAgent": "signin.amazonaws.com",
+    "training_note": "Synthetic CloudTrail event for detection testing."
+  },
+  {
+    "eventTime": "2026-06-18T12:05:00Z",
+    "eventName": "AttachUserPolicy",
+    "userIdentity": {
+      "type": "IAMUser",
+      "arn": "arn:aws:iam::123456789012:user/example-user"
+    },
+    "requestParameters": {
+      "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+    },
+    "sourceIPAddress": "203.0.113.44",
+    "training_note": "Synthetic privileged policy attachment."
+  }
+]

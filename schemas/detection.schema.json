@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Detection Metadata",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "status",
+    "hypothesis",
+    "severity",
+    "confidence",
+    "data_sources",
+    "required_fields",
+    "owner",
+    "review_date"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "experimental",
+        "production",
+        "deprecated"
+      ]
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "data_sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "false_positives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "triage_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "response_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner": {
+      "type": "string"
+    },
+    "review_date": {
+      "type": "string"
+    }
+  }
+}

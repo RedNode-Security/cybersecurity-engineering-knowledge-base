@@ -1,0 +1,38 @@
+{
+  "id": "DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+  "name": "Repeated API Authorization Failures",
+  "status": "experimental",
+  "hypothesis": "Authorization probing may produce repeated denials across objects or actions.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "application_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "endpoint",
+    "result",
+    "reason"
+  ],
+  "false_positives": [
+    "automated tests"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/application/api-repeated-authz-failures.md",
+  "test_case_id": "TEST-DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+  "logic": "denials by actor and distinct_object_ids exceed threshold",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

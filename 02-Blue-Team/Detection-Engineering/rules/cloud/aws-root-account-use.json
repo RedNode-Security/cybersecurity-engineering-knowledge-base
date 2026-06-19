@@ -1,0 +1,36 @@
+{
+  "id": "DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+  "name": "AWS Root Account Use",
+  "status": "experimental",
+  "hypothesis": "Root account usage should be rare and emergency-only.",
+  "severity": "critical",
+  "confidence": "high",
+  "data_sources": [
+    "aws_cloudtrail"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "userIdentity.type"
+  ],
+  "false_positives": [
+    "break-glass test"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-root-account-use.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_ROOT_ACCOUNT_USE",
+  "logic": "userIdentity.type=Root",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

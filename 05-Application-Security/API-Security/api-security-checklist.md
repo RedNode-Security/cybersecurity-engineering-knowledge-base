@@ -10,71 +10,58 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # API Security Checklist
-
-## Overview
-
-API security protects application interfaces from unauthorized access, data exposure, abuse, and insecure integration patterns.
 
 ## Authentication
 
-- [ ] All sensitive endpoints require authentication
-- [ ] Tokens are validated server-side
-- [ ] Expired, malformed, or unsigned tokens are rejected
-- [ ] Strong authentication is required for administrative actions
-- [ ] Service-to-service authentication is documented
+- [ ] Sensitive endpoints require authentication.
+- [ ] Tokens are validated server-side.
+- [ ] Issuer, audience, expiry, signature, and algorithm are checked.
+- [ ] Administrative actions require strong authentication.
+- [ ] Service-to-service credentials are scoped and rotated.
 
 ## Authorization
 
-- [ ] Object-level authorization checks are enforced
-- [ ] Function-level authorization checks are enforced
-- [ ] Administrative endpoints are separated and monitored
-- [ ] Authorization decisions are made server-side
-- [ ] Tests cover cross-tenant and horizontal access cases
+- [ ] Object-level authorization is enforced.
+- [ ] Function-level authorization is enforced.
+- [ ] Tenant boundaries are tested.
+- [ ] Authorization is server-side.
+- [ ] Admin APIs are monitored.
 
-## Input and Data Handling
+## Input and Output
 
-- [ ] Input validation is applied consistently
-- [ ] Error messages do not expose sensitive internals
-- [ ] Sensitive data is minimized in responses
-- [ ] Pagination and filtering do not leak unauthorized records
-- [ ] File upload behavior is restricted and logged
+- [ ] Input validation is consistent.
+- [ ] Errors do not expose stack traces or secrets.
+- [ ] Sensitive fields are minimized.
+- [ ] Pagination cannot leak unauthorized records.
+- [ ] File uploads are restricted.
 
-## Abuse Controls
+## Logging
 
-- [ ] Rate limits exist for authentication and expensive actions
-- [ ] Brute force and enumeration patterns are monitored
-- [ ] Business logic abuse cases are threat-modeled
-- [ ] Automated clients are identified where needed
+Log:
 
-## Logging and Monitoring
+- Request ID
+- Actor
+- Endpoint
+- Target object
+- Result
+- Reason for denial
+- Source context
 
-- [ ] Authentication failures are logged
-- [ ] Authorization failures are logged
-- [ ] Administrative actions are logged
-- [ ] Sensitive data access is logged
-- [ ] Logs include request ID, user ID, source, endpoint, and outcome
-- [ ] Logs avoid storing secrets and full tokens
+Do not log full tokens, passwords, secrets, or sensitive payloads.
 
-## Detection Opportunities
+## Detection Ideas
 
-- Repeated authorization failures across object IDs
-- High-volume requests to sensitive endpoints
-- Token validation failures from the same client
-- Unusual administrative actions
-- Cross-tenant access attempts
-- Unexpected data export volume
+- Repeated 401 or 403 responses.
+- Many object IDs accessed by one user.
+- Cross-tenant access attempts.
+- Sudden export volume increase.
+- Admin action outside normal pattern.
 
-## Secure Design Questions
+## Example Test Case
 
-- What is the trust boundary?
-- What identity is making the request?
-- What object is being accessed?
-- Who owns the object?
-- What business action is being performed?
-- What should be logged if this action is abused?
-
-## References
-
-- OWASP API Security Top 10: https://owasp.org/API-Security/
-- OWASP Application Security Verification Standard: https://owasp.org/www-project-application-security-verification-standard/
+```text
+User from tenant A requests /projects/{tenant-b-project}/invoices.
+Expected: 403 or 404, audit log with cross_tenant_access_attempt, no invoice data returned.
+```

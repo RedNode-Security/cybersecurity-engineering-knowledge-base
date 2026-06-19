@@ -1,0 +1,37 @@
+{
+  "id": "DET-AI-LLM_TOOL_CALL_WITHOUT_APPROVAL",
+  "name": "LLM Tool Call Without Required Approval",
+  "status": "experimental",
+  "hypothesis": "Agent misuse may involve high-risk tool calls without approval.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "ai_agent_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "tool",
+    "approval_status"
+  ],
+  "false_positives": [
+    "test environment"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/ai/llm-tool-call-without-approval.md",
+  "test_case_id": "TEST-DET-AI-LLM_TOOL_CALL_WITHOUT_APPROVAL",
+  "logic": "tool risk high and approval missing",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

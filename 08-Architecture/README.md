@@ -2,24 +2,41 @@
 
 ## Purpose
 
-This section collects notes, playbooks, diagrams, checklists, and references for **Security Architecture**.
+Security architecture connects business goals, threats, controls, telemetry,
+operations, automation, and risk decisions into coherent systems.
 
-## Suggested Topics
+## Architecture Operating Model
 
-- Zero Trust
-- XDR architecture
-- SOC architecture
-- Autonomous security systems
-- Reference architectures
-- Architecture decision records
+```text
+Business Goal → Assets → Threat Model → Controls → Telemetry → Operations → Metrics → Improvement
+```
 
-## Recommended First Notes
+## Detailed Pages
 
-- Start with one overview page.
-- Add one practical checklist.
-- Add one detection, architecture, or lab artifact where applicable.
-- Link back to references and related domains.
+- [SOC Reference Architecture](soc-reference-architecture.md)
+- [Zero Trust Reference Architecture](zero-trust-reference-architecture.md)
+- [Autonomous SOC Reference Model](autonomous-soc-reference-model.md)
 
-## Local Index
+## Architecture Review Questions
 
-Add links here as this section grows.
+- What are the critical assets and trust boundaries?
+- Which identities can perform privileged actions?
+- What prevents misuse?
+- What detects misuse?
+- What contains failure?
+- Who owns response?
+- Which metrics prove the design is working?
+
+## Architecture Quality Standard
+
+Architecture pages should include:
+
+- Context and assumptions
+- Components
+- Data flow
+- Trust boundaries
+- Control objectives
+- Telemetry
+- Failure modes
+- Operational ownership
+- Metrics

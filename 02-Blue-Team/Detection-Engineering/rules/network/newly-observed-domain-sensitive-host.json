@@ -1,0 +1,38 @@
+{
+  "id": "DET-NETWORK-NEWLY_OBSERVED_DOMAIN_SENSITIVE_HOST",
+  "name": "Newly Observed Domain From Sensitive Host",
+  "status": "experimental",
+  "hypothesis": "Sensitive hosts contacting newly observed domains may indicate compromise.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "dns_logs",
+    "asset_inventory"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "query"
+  ],
+  "false_positives": [
+    "software updates",
+    "developer tools"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/network/newly-observed-domain-sensitive-host.md",
+  "test_case_id": "TEST-DET-NETWORK-NEWLY_OBSERVED_DOMAIN_SENSITIVE_HOST",
+  "logic": "dns query first_seen and asset_criticality high",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

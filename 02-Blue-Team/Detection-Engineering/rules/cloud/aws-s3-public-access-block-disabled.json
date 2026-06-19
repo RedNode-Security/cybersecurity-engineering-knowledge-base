@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+  "name": "AWS S3 Public Access Block Disabled",
+  "status": "experimental",
+  "hypothesis": "Data exposure risk may increase when public access blocks are disabled.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "aws_cloudtrail"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "bucket",
+    "actor"
+  ],
+  "false_positives": [
+    "public website bucket"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-s3-public-access-block-disabled.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_S3_PUBLIC_ACCESS_BLOCK_DISABLED",
+  "logic": "public_access_block disabled on sensitive bucket",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,235 @@
+[
+  {
+    "event_id": "evt-win-001",
+    "windows_event_id": 4728,
+    "actor": "EXAMPLE\\helpdesk01",
+    "target_group": "Domain Admins",
+    "change_id": null,
+    "detection_id": "DET-WINDOWS-PRIVILEGED_GROUP_MEMBERSHIP_CHANGE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-001",
+    "windows_event_id": 4728,
+    "actor": "EXAMPLE\\pam-svc",
+    "target_group": "Domain Admins",
+    "change_id": "CHG-1",
+    "detection_id": "DET-WINDOWS-PRIVILEGED_GROUP_MEMBERSHIP_CHANGE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-002",
+    "windows_event_id": 4648,
+    "user": "EXAMPLE\\admin",
+    "target_host": "db01",
+    "rare_for_user": true,
+    "detection_id": "DET-WINDOWS-EXPLICIT_CREDENTIALS_RARE_HOST",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-002",
+    "windows_event_id": 4648,
+    "user": "EXAMPLE\\admin",
+    "target_host": "jump01",
+    "approved": true,
+    "detection_id": "DET-WINDOWS-EXPLICIT_CREDENTIALS_RARE_HOST",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-003",
+    "user": "user@example.com",
+    "process": "powershell.exe",
+    "risky_signin_1h": true,
+    "detection_id": "DET-WINDOWS-POWERSHELL_AFTER_RISKY_LOGON",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-003",
+    "user": "admin@example.com",
+    "process": "powershell.exe",
+    "change_id": "CHG-2",
+    "detection_id": "DET-WINDOWS-POWERSHELL_AFTER_RISKY_LOGON",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-004",
+    "host": "dc01",
+    "service_name": "ExampleSvc",
+    "actor": "EXAMPLE\\user",
+    "host_criticality": "high",
+    "detection_id": "DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-004",
+    "host": "app01",
+    "service_name": "ApprovedAgent",
+    "actor": "deploy-svc",
+    "change_id": "CHG-3",
+    "detection_id": "DET-WINDOWS-NEW_SERVICE_SENSITIVE_HOST",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-005",
+    "host": "workstation01",
+    "user": "EXAMPLE\\user",
+    "task_name": "Updater",
+    "rare_for_user": true,
+    "detection_id": "DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-005",
+    "host": "workstation01",
+    "user": "EXAMPLE\\admin",
+    "task_name": "ApprovedMaintenance",
+    "change_id": "CHG-4",
+    "detection_id": "DET-WINDOWS-SCHEDULED_TASK_UNUSUAL_USER",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-006",
+    "host": "ws01",
+    "process": "unknown.exe",
+    "target_process": "lsass.exe",
+    "access_type": "read",
+    "detection_id": "DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-006",
+    "host": "ws01",
+    "process": "edr_sensor.exe",
+    "target_process": "lsass.exe",
+    "approved_tool": true,
+    "detection_id": "DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-007",
+    "parent_process": "winword.exe",
+    "process": "powershell.exe",
+    "network_connection": true,
+    "detection_id": "DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-007",
+    "parent_process": "excel.exe",
+    "process": "powershell.exe",
+    "approved_macro": true,
+    "detection_id": "DET-WINDOWS-OFFICE_SPAWNS_SCRIPT_INTERPRETER",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-008",
+    "windows_event_id": 4732,
+    "actor": "EXAMPLE\\user",
+    "target_user": "EXAMPLE\\temp",
+    "group": "Administrators",
+    "detection_id": "DET-WINDOWS-NEW_LOCAL_ADMIN_ADDED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-008",
+    "windows_event_id": 4732,
+    "actor": "EXAMPLE\\mdm-svc",
+    "group": "Administrators",
+    "approved_tool": true,
+    "detection_id": "DET-WINDOWS-NEW_LOCAL_ADMIN_ADDED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-009",
+    "host": "ws01",
+    "service_name": "ExampleEDR",
+    "action": "stopped",
+    "actor": "EXAMPLE\\user",
+    "detection_id": "DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-009",
+    "host": "ws01",
+    "service_name": "ExampleEDR",
+    "action": "restart",
+    "maintenance_window": true,
+    "detection_id": "DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-010",
+    "host": "server01",
+    "source_host": "workstation44",
+    "parent_process": "wmiprvse.exe",
+    "process": "cmd.exe",
+    "detection_id": "DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-010",
+    "host": "server01",
+    "source_host": "adminjump01",
+    "parent_process": "wmiprvse.exe",
+    "approved_admin": true,
+    "detection_id": "DET-WINDOWS-WMI_PROCESS_CREATION_REMOTE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-011",
+    "host": "file01",
+    "archive_created": true,
+    "bytes_out_30m": 900000000,
+    "destination_rare": true,
+    "detection_id": "DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-011",
+    "host": "file01",
+    "archive_created": true,
+    "backup_job": true,
+    "detection_id": "DET-WINDOWS-ARCHIVE_CREATED_BEFORE_UPLOAD",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-win-012",
+    "process": "powershell.exe",
+    "encoded_command": true,
+    "network_connection": true,
+    "detection_id": "DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-win-benign-012",
+    "process": "powershell.exe",
+    "encoded_command": true,
+    "management_tool": true,
+    "detection_id": "DET-WINDOWS-POWERSHELL_ENCODED_COMMAND_NETWORK",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

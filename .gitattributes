@@ -1,0 +1,19 @@
+# Normalize text files to LF in the repository.
+* text=auto eol=lf
+
+# Markdown and source files
+*.md text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+
+# Images and binary artifacts
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.zip binary

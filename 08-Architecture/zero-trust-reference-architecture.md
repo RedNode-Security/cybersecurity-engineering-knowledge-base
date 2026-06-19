@@ -10,65 +10,49 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Zero Trust Reference Architecture
 
 ## Overview
 
-Zero Trust is a security architecture approach based on continuous verification, least privilege, explicit access decisions, and assumed breach.
+Zero Trust is an architecture strategy based on explicit verification, least
+privilege, continuous evaluation, and assumed breach.
 
-## Why It Matters
+## Core Principles
 
-Traditional perimeter models fail when users, applications, devices, and data exist across cloud, SaaS, remote work, and third-party environments.
+- Verify explicitly.
+- Use least privilege.
+- Assume breach.
+- Evaluate risk continuously.
+- Monitor access decisions.
 
-## Core Ideas
-
-- Verify each access request explicitly
-- Use least privilege
-- Assume breach
-- Continuously evaluate risk
-- Segment access by identity, device, application, and data sensitivity
-- Monitor and log decisions
-
-## Reference Components
+## Components
 
 | Component | Purpose |
 |---|---|
 | Identity provider | Authenticates users and workloads |
-| Device posture | Evaluates endpoint health and compliance |
-| Policy engine | Makes access decisions based on context |
-| Policy enforcement point | Enforces decisions at application, network, or proxy layer |
-| Telemetry platform | Records access decisions and anomalies |
-| Asset and data inventory | Adds context for criticality and sensitivity |
+| Device posture | Evaluates endpoint health |
+| Policy engine | Makes access decisions |
+| Enforcement point | Applies access decisions |
+| Asset inventory | Adds owner and criticality |
+| Telemetry | Records decisions and anomalies |
 
-## Access Decision Inputs
+## Example Access Decision
 
-- User identity
-- User role and privilege level
-- Device posture
-- Location and network context
-- Application sensitivity
-- Data classification
-- Session risk
-- Recent behavior
+```text
+User requests admin portal.
+Policy checks: identity, MFA, device health, role, location, session risk.
+Decision: allow, deny, or require step-up verification.
+```
 
-## Detection Opportunities
+## Detection Ideas
 
-- Access from unmanaged or non-compliant device
-- Privileged action after risky authentication
-- Repeated denied access to sensitive applications
-- Policy bypass attempts
-- Unusual service-to-service access
-- Access to sensitive data outside normal pattern
-
-## Automation Strategy
-
-- Continuously evaluate access policy drift
-- Enrich access events with asset and identity context
-- Generate review tasks for excessive privilege
-- Alert on risky access decisions
-- Feed incident learnings into policy updates
+- Privileged action after risky sign-in.
+- Access from unmanaged device.
+- Repeated denied access to sensitive application.
+- Policy bypass attempts.
 
 ## References
 
-- NIST SP 800-207 Zero Trust Architecture
-- CISA Zero Trust Maturity Model
+- NIST SP 800-207: https://csrc.nist.gov/publications/detail/sp/800-207/final
+- CISA Zero Trust Maturity Model: https://www.cisa.gov/zero-trust-maturity-model

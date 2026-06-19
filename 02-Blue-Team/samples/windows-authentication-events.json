@@ -1,0 +1,33 @@
+[
+  {
+    "timestamp": "2026-06-18T10:00:00Z",
+    "event_id": 4625,
+    "host": "dc01.example.com",
+    "user": "EXAMPLE\\a.user",
+    "source_ip": "203.0.113.50",
+    "logon_type": 3,
+    "result": "failure",
+    "reason": "bad_password",
+    "training_note": "Synthetic failed logon event for password spray analysis."
+  },
+  {
+    "timestamp": "2026-06-18T10:07:00Z",
+    "event_id": 4624,
+    "host": "dc01.example.com",
+    "user": "EXAMPLE\\b.user",
+    "source_ip": "203.0.113.50",
+    "logon_type": 3,
+    "result": "success",
+    "training_note": "Synthetic success after failures; review for password spray follow-up."
+  },
+  {
+    "timestamp": "2026-06-18T12:10:00Z",
+    "event_id": 4728,
+    "host": "dc01.example.com",
+    "actor": "EXAMPLE\\helpdesk01",
+    "target_user": "EXAMPLE\\temp.admin",
+    "target_group": "Domain Admins",
+    "result": "success",
+    "training_note": "Synthetic privileged group membership change."
+  }
+]

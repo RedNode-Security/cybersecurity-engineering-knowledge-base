@@ -1,0 +1,39 @@
+{
+  "id": "DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+  "name": "LSASS Access by Unusual Process",
+  "status": "experimental",
+  "hypothesis": "Credential access may involve unusual process access to LSASS.",
+  "severity": "critical",
+  "confidence": "medium",
+  "data_sources": [
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "process",
+    "target_process",
+    "access_type"
+  ],
+  "false_positives": [
+    "EDR sensor",
+    "backup/security tool"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/lsass-access-unusual-process.md",
+  "test_case_id": "TEST-DET-WINDOWS-LSASS_ACCESS_UNUSUAL_PROCESS",
+  "logic": "process_access target=lsass and process not in approved_tools",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

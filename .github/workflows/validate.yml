@@ -15,5 +15,21 @@ jobs:
           python-version: '3.x'
       - name: Validate repository
         run: python scripts/validate_repository.py
+      - name: Validate JSON samples
+        run: python scripts/validate_json_samples.py
+      - name: Validate detection metadata
+        run: python scripts/validate_detection_metadata.py
+      - name: Validate detection reference library
+        run: python scripts/validate_detection_reference_library.py
+      - name: Validate CVE pages
+        run: python scripts/validate_cve_pages.py
+      - name: Check review dates
+        run: python scripts/check_review_dates.py
+      - name: Check internal links
+        run: python scripts/check_internal_links.py
+      - name: Generate detection coverage report
+        run: python scripts/generate_detection_coverage.py
+      - name: Generate published index
+        run: python scripts/generate_published_index.py
       - name: Generate index check
         run: python scripts/generate_index.py --check

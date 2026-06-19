@@ -1,0 +1,37 @@
+{
+  "id": "DET-AI-RAG_SENSITIVE_COLLECTION_ACCESS",
+  "name": "RAG Sensitive Collection Access",
+  "status": "experimental",
+  "hypothesis": "RAG sensitive collection access should be authorized and audited.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "rag_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "collection",
+    "decision"
+  ],
+  "false_positives": [
+    "approved incident responder"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/ai/rag-sensitive-collection-access.md",
+  "test_case_id": "TEST-DET-AI-RAG_SENSITIVE_COLLECTION_ACCESS",
+  "logic": "sensitive collection accessed and role mismatch",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

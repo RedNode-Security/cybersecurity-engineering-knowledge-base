@@ -1,0 +1,40 @@
+{
+  "id": "DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+  "name": "Privileged Role Assignment Without Change Context",
+  "status": "experimental",
+  "hypothesis": "Unauthorized privilege escalation may appear as privileged role assignment without approved change context.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "admin_audit_logs",
+    "change_records"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "target",
+    "role",
+    "change_id"
+  ],
+  "false_positives": [
+    "emergency access",
+    "PAM workflow"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/privileged-role-assignment-no-change.md",
+  "test_case_id": "TEST-DET-IDENTITY-PRIVILEGED_ROLE_ASSIGNMENT_NO_CHANGE",
+  "logic": "privileged_role_assignment where missing change_id and actor not approved automation",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

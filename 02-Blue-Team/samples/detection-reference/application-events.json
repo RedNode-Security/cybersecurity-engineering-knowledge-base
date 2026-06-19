@@ -1,0 +1,116 @@
+[
+  {
+    "event_id": "evt-app-001",
+    "user": "user-a",
+    "tenant_id": "tenant-a",
+    "object_tenant": "tenant-b",
+    "result": "denied",
+    "reason": "cross_tenant_access_attempt",
+    "detection_id": "DET-APPLICATION-API_CROSS_TENANT_DENIALS",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-001",
+    "user": "qa-user",
+    "result": "denied",
+    "test_case": "authz-regression",
+    "detection_id": "DET-APPLICATION-API_CROSS_TENANT_DENIALS",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-app-002",
+    "user": "analyst@example.com",
+    "endpoint": "/export/customers",
+    "record_count": 50000,
+    "baseline_p95": 1000,
+    "detection_id": "DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-002",
+    "user": "reporting-svc",
+    "record_count": 60000,
+    "scheduled_report": true,
+    "detection_id": "DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-app-003",
+    "actor": "admin@example.com",
+    "source_seen_first_time": true,
+    "action": "Create API token",
+    "detection_id": "DET-APPLICATION-API_ADMIN_ACTION_NEW_SOURCE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-003",
+    "actor": "admin@example.com",
+    "source_seen_first_time": true,
+    "vpn_change": true,
+    "detection_id": "DET-APPLICATION-API_ADMIN_ACTION_NEW_SOURCE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-app-004",
+    "actor": "user@example.com",
+    "operation": "NestedInvoiceQuery",
+    "complexity": 9000,
+    "limit": 1000,
+    "detection_id": "DET-APPLICATION-GRAPHQL_HIGH_COMPLEXITY_QUERY",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-004",
+    "actor": "internal-report",
+    "operation": "MonthlyReport",
+    "complexity": 8000,
+    "approved_client": true,
+    "detection_id": "DET-APPLICATION-GRAPHQL_HIGH_COMPLEXITY_QUERY",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-app-005",
+    "integration": "payments-webhook",
+    "result": "failure",
+    "reason": "signature_invalid",
+    "failures_1h": 50,
+    "detection_id": "DET-APPLICATION-WEBHOOK_SECRET_ROTATION_FAILURE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-005",
+    "integration": "dev-webhook",
+    "result": "failure",
+    "environment": "dev",
+    "detection_id": "DET-APPLICATION-WEBHOOK_SECRET_ROTATION_FAILURE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-app-006",
+    "actor": "user@example.com",
+    "denials_10m": 75,
+    "distinct_object_ids": 70,
+    "detection_id": "DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-app-benign-006",
+    "actor": "qa-automation",
+    "denials_10m": 100,
+    "test_run": true,
+    "detection_id": "DET-APPLICATION-API_REPEATED_AUTHZ_FAILURES",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

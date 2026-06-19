@@ -1,0 +1,37 @@
+{
+  "id": "DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+  "name": "API Sensitive Data Export Spike",
+  "status": "experimental",
+  "hypothesis": "Account misuse may produce unusual sensitive data export volume.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "application_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "endpoint",
+    "record_count"
+  ],
+  "false_positives": [
+    "scheduled reporting"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/application/api-sensitive-export-spike.md",
+  "test_case_id": "TEST-DET-APPLICATION-API_SENSITIVE_EXPORT_SPIKE",
+  "logic": "record_count > baseline_p95 and endpoint sensitive",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

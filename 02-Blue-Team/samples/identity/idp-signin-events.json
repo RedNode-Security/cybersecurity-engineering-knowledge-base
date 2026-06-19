@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-06-19T08:00:00Z",
+    "user": "user1@example.com",
+    "source_ip": "203.0.113.10",
+    "result": "failure",
+    "mfa_result": "not_challenged",
+    "application": "vpn"
+  },
+  {
+    "timestamp": "2026-06-19T08:03:00Z",
+    "user": "user2@example.com",
+    "source_ip": "203.0.113.10",
+    "result": "failure",
+    "mfa_result": "not_challenged",
+    "application": "vpn"
+  },
+  {
+    "timestamp": "2026-06-19T08:08:00Z",
+    "user": "user2@example.com",
+    "source_ip": "203.0.113.10",
+    "result": "success",
+    "mfa_result": "approved",
+    "application": "vpn"
+  }
+]

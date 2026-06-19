@@ -1,0 +1,39 @@
+{
+  "id": "DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+  "name": "Kubernetes Exec in Sensitive Namespace",
+  "status": "experimental",
+  "hypothesis": "Interactive exec into sensitive pods may require review.",
+  "severity": "medium",
+  "confidence": "medium",
+  "data_sources": [
+    "kubernetes_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "namespace",
+    "pod",
+    "verb"
+  ],
+  "false_positives": [
+    "incident response",
+    "debugging"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/kubernetes/pod-exec-sensitive-namespace.md",
+  "test_case_id": "TEST-DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+  "logic": "pods/exec in sensitive namespace without ticket",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

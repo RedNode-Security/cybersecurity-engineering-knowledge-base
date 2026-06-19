@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+  "name": "Azure Conditional Access Policy Disabled",
+  "status": "experimental",
+  "hypothesis": "Identity defense impairment may involve disabling conditional access.",
+  "severity": "critical",
+  "confidence": "high",
+  "data_sources": [
+    "azure_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "policy",
+    "action"
+  ],
+  "false_positives": [
+    "policy migration"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/azure-conditional-access-disabled.md",
+  "test_case_id": "TEST-DET-CLOUD-AZURE_CONDITIONAL_ACCESS_DISABLED",
+  "logic": "conditional_access disabled by unexpected actor",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+  "name": "AWS GuardDuty Disabled",
+  "status": "experimental",
+  "hypothesis": "Cloud defense impairment may involve disabling GuardDuty.",
+  "severity": "critical",
+  "confidence": "high",
+  "data_sources": [
+    "aws_cloudtrail"
+  ],
+  "required_fields": [
+    "eventTime",
+    "eventName",
+    "userIdentity.arn"
+  ],
+  "false_positives": [
+    "security tooling migration"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/aws-guardduty-disabled.md",
+  "test_case_id": "TEST-DET-CLOUD-AWS_GUARDDUTY_DISABLED",
+  "logic": "GuardDuty disable/delete events by unexpected actor",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

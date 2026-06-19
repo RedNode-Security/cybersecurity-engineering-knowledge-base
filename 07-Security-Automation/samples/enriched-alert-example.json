@@ -1,0 +1,25 @@
+{
+  "alert_id": "alert-1001",
+  "alert_name": "Unusual Sign-in Followed by Privileged Action",
+  "created": "2026-06-18T09:31:00Z",
+  "severity": "high",
+  "confidence": "medium",
+  "entity": {
+    "user": "alex.admin@example.com",
+    "source_ip": "203.0.113.77",
+    "asset": "cloud-admin-portal"
+  },
+  "enrichment": {
+    "user_privileged": true,
+    "mfa_enabled": true,
+    "new_source_for_user": true,
+    "asset_criticality": "high",
+    "approved_change_found": false
+  },
+  "recommended_triage": [
+    "Verify user activity through approved channel",
+    "Review role activation event",
+    "Check access key creation and follow-on API activity"
+  ],
+  "training_note": "Synthetic enriched alert example for documentation and testing."
+}

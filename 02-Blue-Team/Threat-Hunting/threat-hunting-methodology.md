@@ -10,65 +10,60 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Threat Hunting Methodology
 
 ## Overview
 
-Threat hunting is a proactive search for suspicious behavior that may not have generated a high-confidence alert.
-
-## Why It Matters
-
-Hunting helps discover blind spots, validate assumptions, improve detections, and find weak signals that automated rules may miss.
+Threat hunting is proactive investigation based on a hypothesis. It searches for
+weak signals that may not yet be covered by high-confidence detections.
 
 ## Hunting Loop
 
-1. Define hypothesis
-2. Identify required telemetry
-3. Query and explore data
-4. Enrich and pivot
-5. Validate findings
-6. Document outcome
-7. Convert useful logic into detections
-8. Improve controls and logging
-
-## Hypothesis Examples
-
-- An attacker using stolen credentials may access rare systems outside a user's normal pattern.
-- Malware staging may produce unusual archive creation followed by outbound network activity.
-- Cloud misuse may involve new access key creation followed by enumeration actions.
+```text
+Question → Hypothesis → Data → Query → Pivot → Validate → Document → Improve
+```
 
 ## Hunt Plan Template
 
-| Field | Value |
+| Field | Example |
 |---|---|
-| Hypothesis |  |
-| ATT&CK mapping |  |
-| Data sources |  |
-| Time range |  |
-| Query approach |  |
-| Expected benign activity |  |
-| Escalation criteria |  |
-| Output | Detection, case, tuning, or no finding |
+| Hypothesis | Compromised users may access rare systems after unusual sign-in |
+| Scope | Privileged users, last 14 days |
+| Data sources | IdP logs, Windows logs, asset inventory |
+| Query approach | Rare source and rare destination joins |
+| Expected benign | Admin maintenance and travel |
+| Escalation criteria | Sensitive asset access without explanation |
+| Output | Detection or case |
 
-## Outcomes
+## Example Hunt
 
-A hunt should end with at least one of these outcomes:
+Hypothesis:
+
+```text
+A compromised cloud identity may create access keys and enumerate storage shortly after sign-in.
+```
+
+Query approach:
+
+1. Find `CreateAccessKey` events.
+2. Join to recent sign-ins by actor.
+3. Identify actors with no key creation in previous 90 days.
+4. Review follow-on API calls.
+5. Escalate if storage or IAM enumeration follows.
+
+## Hunt Outcomes
 
 - Confirmed incident
 - New detection
 - Detection tuning
-- Logging improvement request
-- Control improvement request
-- Documented negative finding
+- Logging gap
+- Control improvement
+- Negative finding with documented coverage
 
-## Automation Strategy
+## Automation Ideas
 
-- Save reusable hunt queries
-- Track hunt hypotheses and outcomes
-- Convert repeated hunt logic into scheduled detections
-- Generate coverage maps by data source and ATT&CK behavior
-
-## References
-
-- MITRE ATT&CK: https://attack.mitre.org/
-- Sqrrl Threat Hunting Reference Model
+- Store hunt hypotheses.
+- Track query results and outcomes.
+- Convert recurring hunts into detections.
+- Generate coverage maps by data source.

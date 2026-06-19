@@ -1,0 +1,37 @@
+{
+  "id": "DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+  "name": "Azure Privileged Role Assignment",
+  "status": "experimental",
+  "hypothesis": "Privilege escalation may involve Azure role assignment.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "azure_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "actor",
+    "target",
+    "role"
+  ],
+  "false_positives": [
+    "PIM activation"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/cloud/azure-privileged-role-assignment.md",
+  "test_case_id": "TEST-DET-CLOUD-AZURE_PRIVILEGED_ROLE_ASSIGNMENT",
+  "logic": "privileged role assignment and missing approval",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

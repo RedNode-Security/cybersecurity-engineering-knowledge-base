@@ -10,33 +10,31 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # LLM Security
 
 ## Overview
 
-LLM security addresses risks introduced by prompts, retrieval systems, agents, tools, data flows, and model outputs.
+LLM security protects model-enabled systems from prompt injection, data leakage,
+unsafe tool use, untrusted retrieval content, memory risks, and weak evaluation.
 
-## Key Risks
+## Local Pages
 
-- Prompt injection
-- Data leakage
-- Insecure tool use
-- Untrusted retrieval content
-- Over-permissive agents
-- Weak evaluation and monitoring
+- [Prompt Injection Threat Model](prompt-injection-threat-model.md)
+- [Prompt Injection Evaluation Examples](prompt-injection-evaluation-examples.md)
 
-## Defender Questions
+## Core Components
 
-- What data can the model access?
-- What tools can the model call?
-- What trust boundary separates user input, retrieved content, and system instructions?
-- Are outputs monitored for policy violations?
-- Are high-risk actions human-approved?
+| Component | Risk | Control |
+|---|---|---|
+| User prompt | Direct injection | Input policy and refusal behavior |
+| System prompt | Policy exposure | Do not reveal hidden instructions |
+| Retrieved content | Indirect injection | Treat as untrusted data |
+| Tools | Unauthorized action | Least privilege and approval gates |
+| Memory | Persistent malicious state | Scope and expiration |
+| Output | Sensitive disclosure | Redaction and monitoring |
 
-## Architecture Themes
+## Design Rule
 
-- Least-privilege tool access
-- Retrieval content isolation
-- Prompt and output logging
-- Human-in-the-loop approvals
-- Evaluation-driven controls
+Untrusted content can be summarized, classified, and transformed. It should not
+be allowed to redefine system behavior or grant permissions.

@@ -10,82 +10,73 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # AWS IAM Hardening Checklist
 
 ## Overview
 
-AWS IAM controls who can access AWS resources and what actions they can perform. IAM misconfiguration is one of the highest-impact cloud security risks.
+AWS IAM is the control plane for AWS permissions. Weak IAM design can lead to
+unauthorized infrastructure changes, data access, persistence, logging changes,
+and cross-account impact.
 
-## Why It Matters
+## Root Account
 
-Cloud identity is the cloud control plane. Excessive privileges, long-lived keys, weak federation, and missing monitoring can lead to broad compromise.
+- [ ] Root account MFA is enabled.
+- [ ] Root access keys do not exist.
+- [ ] Root usage is monitored.
+- [ ] Emergency root access process is documented.
+- [ ] Root credentials are not used for daily administration.
 
-## Checklist
+## Human Access
 
-### Root Account
+- [ ] Federation is used instead of long-lived IAM users.
+- [ ] MFA is required for privileged roles.
+- [ ] Privileged role assumption is logged.
+- [ ] Roles have owners and review dates.
+- [ ] Temporary access is preferred over standing admin access.
 
-- [ ] Root account has MFA enabled
-- [ ] Root access keys do not exist
-- [ ] Root account use is monitored
-- [ ] Root credentials are stored in a controlled emergency process
+## Workload Access
 
-### Users and Roles
+- [ ] Workloads use IAM roles, not embedded keys.
+- [ ] Trust policies are scoped to expected principals.
+- [ ] Cross-account role access is documented.
+- [ ] Unused roles are removed.
+- [ ] Permission boundaries are used where appropriate.
 
-- [ ] Prefer roles and federation over long-lived IAM users
-- [ ] Use least privilege policies
-- [ ] Avoid wildcard administrative permissions unless justified
-- [ ] Review unused users, roles, and permissions
-- [ ] Remove stale access keys
+## Policy Review
 
-### Access Keys
+Review policies for:
 
-- [ ] Inventory all active keys
-- [ ] Rotate keys based on policy
-- [ ] Alert on new access key creation
-- [ ] Alert on old unused keys becoming active
-- [ ] Avoid embedding keys in code or CI logs
+- `Action: *`
+- `Resource: *`
+- IAM write permissions
+- Policy attachment permissions
+- Role assumption permissions
+- Logging modification permissions
+- KMS key administration permissions
 
-### Policies
+## Detection Ideas
 
-- [ ] Review policies with wildcard actions or resources
-- [ ] Use permission boundaries where appropriate
-- [ ] Use service control policies in multi-account environments
-- [ ] Separate human and workload permissions
+| Behavior | Example event |
+|---|---|
+| Root account used | `ConsoleLogin` with root identity |
+| New access key created | `CreateAccessKey` |
+| Admin policy attached | `AttachUserPolicy`, `AttachRolePolicy` |
+| Trust policy changed | `UpdateAssumeRolePolicy` |
+| Logging disabled | `StopLogging`, `DeleteTrail`, `PutEventSelectors` |
+| Public access changed | S3 public access block or bucket policy change |
 
-### Monitoring
+## Response Example — Suspicious Access Key
 
-- [ ] Enable CloudTrail where applicable
-- [ ] Monitor IAM policy changes
-- [ ] Monitor role assumption patterns
-- [ ] Alert on privilege escalation paths
-- [ ] Send logs to a central security account or SIEM
-
-## Detection Hypotheses
-
-- New access key created for a rarely used IAM user
-- Privileged policy attached outside change window
-- Role assumed from unusual source or principal
-- Root account used for non-emergency action
-- CloudTrail logging disabled or modified
-
-## Response Guidance
-
-- Revoke or deactivate suspicious keys
-- Remove unauthorized policies
-- Revert risky trust policy changes
-- Review CloudTrail around the event
-- Check for follow-on actions such as data access or persistence
-
-## Automation Strategy
-
-- Schedule IAM credential reports
-- Detect unused permissions
-- Alert on new admin privileges
-- Generate access review tickets
-- Enforce policy-as-code checks before deployment
+1. Identify key, user, source IP, and creation time.
+2. Confirm whether a deployment or change request explains it.
+3. If unauthorized, deactivate the key.
+4. Review actions performed with the key.
+5. Rotate related secrets if exposure is suspected.
+6. Hunt for similar key creation across accounts.
 
 ## References
 
-- AWS IAM Documentation: https://docs.aws.amazon.com/iam/
-- AWS CloudTrail Documentation: https://docs.aws.amazon.com/cloudtrail/
-- CIS AWS Foundations Benchmark
+- AWS IAM: https://docs.aws.amazon.com/iam/
+- AWS CloudTrail: https://docs.aws.amazon.com/cloudtrail/
+- CIS AWS Foundations Benchmark: https://www.cisecurity.org/benchmark/amazon_web_services

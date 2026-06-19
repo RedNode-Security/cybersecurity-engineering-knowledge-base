@@ -1,0 +1,38 @@
+{
+  "id": "DET-LINUX-SUDOERS_FILE_MODIFIED",
+  "name": "Sudoers File Modified",
+  "status": "experimental",
+  "hypothesis": "Privilege changes may involve sudoers modification.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "linux_audit_logs",
+    "edr_file_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "file_path",
+    "actor"
+  ],
+  "false_positives": [
+    "configuration management"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/linux/sudoers-file-modified.md",
+  "test_case_id": "TEST-DET-LINUX-SUDOERS_FILE_MODIFIED",
+  "logic": "file_write path in sudoers_paths and actor not config_mgmt",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2026-06-19T09:00:00Z",
+    "host": "linux01",
+    "event": "failed_ssh",
+    "user": "invalid-admin",
+    "source_ip": "203.0.113.20"
+  },
+  {
+    "timestamp": "2026-06-19T09:04:00Z",
+    "host": "linux01",
+    "event": "accepted_publickey",
+    "user": "deploy",
+    "source_ip": "198.51.100.10"
+  },
+  {
+    "timestamp": "2026-06-19T09:05:00Z",
+    "host": "linux01",
+    "event": "sudo",
+    "user": "deploy",
+    "command": "/usr/bin/systemctl restart app"
+  }
+]

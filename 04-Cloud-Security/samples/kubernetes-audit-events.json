@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-06-19T13:00:00Z",
+    "actor": "system:serviceaccount:default:builder",
+    "verb": "create",
+    "resource": "rolebindings",
+    "namespace": "kube-system",
+    "result": "allowed"
+  },
+  {
+    "timestamp": "2026-06-19T13:10:00Z",
+    "actor": "user@example.com",
+    "verb": "get",
+    "resource": "secrets",
+    "namespace": "prod",
+    "result": "allowed"
+  }
+]

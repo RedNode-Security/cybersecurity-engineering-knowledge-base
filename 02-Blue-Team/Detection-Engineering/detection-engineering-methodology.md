@@ -10,39 +10,47 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Detection Engineering Methodology
 
 ## Overview
 
-Detection engineering is the practice of converting threat knowledge into reliable, testable, documented, and maintainable detections.
+Detection engineering turns threat behavior into reliable, testable, and
+maintainable detections. A detection is not only a query. It is an operational
+artifact with a hypothesis, telemetry requirements, logic, false-positive model,
+triage guidance, test plan, owner, review date, and success metrics.
 
-A good detection is not just a query. It is an engineering artifact with a hypothesis, required telemetry, logic, tuning guidance, test plan, triage steps, ownership, and a review cycle.
+## Lifecycle
 
-## Why It Matters
+```text
+Threat Knowledge → Detection Hypothesis → Telemetry Mapping → Logic → Test → Deploy → Measure → Improve
+```
 
-Security teams often fail because alerts are noisy, poorly documented, or disconnected from response. Detection engineering reduces that gap by making each detection measurable and operational.
+## Step 1 — Define the Threat Behavior
 
-## Method
+Start with behavior, not tools or indicators.
 
-### 1. Define the Behavior
+Weak idea:
 
-Start with behavior, not tool names or indicators.
+```text
+Detect bad IPs.
+```
 
-Good:
+Better idea:
 
-- A user authenticates from an unusual location and then performs a privileged action.
-- A host creates a suspicious scheduled task after a script execution.
-- A new cloud access key is created for an identity that rarely performs administrative actions.
+```text
+Detect a sequence where a user authenticates from a new source and performs a privileged action within 30 minutes.
+```
 
-Weak:
+Best idea:
 
-- Detect bad IPs.
-- Detect malware.
-- Detect suspicious activity.
+```text
+Detect likely account misuse by correlating unusual authentication context, privileged action, and lack of historical behavior for the account.
+```
 
-### 2. Write the Detection Hypothesis
+## Step 2 — Write the Hypothesis
 
-Format:
+Use a consistent structure:
 
 ```text
 If <threat behavior> occurs, then <telemetry source> should show <observable pattern>.
@@ -51,119 +59,90 @@ If <threat behavior> occurs, then <telemetry source> should show <observable pat
 Example:
 
 ```text
-If an account is misused after credential theft, identity logs may show unusual authentication context followed by privileged actions or access to sensitive systems.
+If password spraying succeeds, authentication logs may show many failed logons across many users from a shared source, followed by one or more successful logons.
 ```
 
-### 3. Map Required Telemetry
+## Step 3 — Map Telemetry
 
-Document exactly what is needed:
-
-- Log source
-- Event names or IDs
-- Required fields
-- Retention
-- Latency
-- Known blind spots
-
-### 4. Build Logic
-
-Detection logic should be understandable and reviewable. Prefer explicit field names and clear thresholds.
-
-Logic categories:
-
-- Known-bad indicator match
-- Suspicious single event
-- Sequence of events
-- Statistical anomaly
-- Rare event
-- Peer-group deviation
-- Policy violation
-
-### 5. Validate Safely
-
-Validation should use owned lab data, approved simulations, or historical benign data.
-
-Avoid unsafe validation against systems you do not own or operate.
-
-### 6. Tune
-
-Tuning should preserve the detection hypothesis. Do not tune away the behavior being detected.
-
-Track:
-
-- False positive sources
-- Suppression criteria
-- Expected benign admin behavior
-- Business exceptions
-- Risk accepted by owner
-
-### 7. Document Triage
-
-Every detection should tell the analyst what to do next.
-
-Minimum triage:
-
-1. Identify affected asset and identity.
-2. Review surrounding activity.
-3. Check change tickets or approved administrative actions.
-4. Enrich with asset criticality and user role.
-5. Escalate if the behavior remains suspicious.
-
-### 8. Monitor Detection Health
-
-Track:
-
-- Alert volume
-- True positive rate
-- False positive rate
-- Mean time to triage
-- Mean time to close
-- Last test date
-- Last owner review
-
-## Detection Engineering Artifact Model
-
-| Field | Purpose |
+| Requirement | Example |
 |---|---|
-| Hypothesis | Defines what the detection is expected to catch |
-| Telemetry | Defines required data sources and fields |
-| Logic | Converts behavior into a rule, query, or model |
-| Tuning | Controls noise without destroying signal |
-| Triage | Guides analyst response |
-| Test plan | Proves the detection can work |
-| Owner | Keeps the detection maintained |
-| Review date | Prevents stale detections |
+| Data source | Identity provider sign-in logs |
+| Required fields | user, source IP, result, app, timestamp, MFA result |
+| Join fields | user ID, device ID, source IP, session ID |
+| Retention | At least 30 days for normal triage, longer for investigations |
+| Blind spots | VPN egress hides original location; shared devices reduce confidence |
 
-## Attack Perspective
+## Step 4 — Build Logic
 
-Attackers benefit when defenders only search for static indicators. Behavior-based detection raises attacker cost by focusing on actions required to progress an intrusion.
+Detection logic patterns:
 
-## Defense Perspective
+| Pattern | Example | When useful |
+|---|---|---|
+| Threshold | 20 failures from one source in 10 minutes | Password attacks |
+| Sequence | New login then admin action | Account misuse |
+| Rare event | First time user assumes admin role | Privilege anomalies |
+| Baseline | Host connects to new country | Behavioral changes |
+| Indicator match | Domain in approved IOC list | Known campaigns |
+| Policy violation | Root account used | Cloud governance |
 
-Defenders should prioritize detections that are:
+## Step 5 — Validate Safely
 
-- High-impact
-- Mapped to important assets
-- Supported by reliable telemetry
-- Triageable by analysts
-- Connected to response actions
+Safe validation options:
 
-## Automation Strategy
+- Lab event generation
+- Vendor-provided test events
+- Sanitized historical events
+- Unit tests against sample logs
+- Purple-team exercise under written authorization
 
-Automate:
+Avoid validation that targets third-party systems or publishes exploit steps.
 
-- Metadata checks
-- Query deployment
-- Detection testing
-- Alert enrichment
-- Case creation
-- Metrics reporting
+## Step 6 — Tune
 
-Keep high-risk containment actions human-approved until confidence is proven.
+Tuning should reduce noise without changing the original hypothesis. Document:
+
+- Expected benign activity
+- Allowlist criteria
+- Suppression duration
+- Business owner approval
+- Risk accepted by tuning
+
+## Step 7 — Triage Guidance
+
+Every detection should include analyst steps:
+
+1. Identify affected identity, host, and resource.
+2. Review timeline before and after the alert.
+3. Check whether activity matches approved business context.
+4. Enrich with asset criticality and user role.
+5. Look for related alerts or similar behavior.
+6. Classify and escalate if suspicious.
+
+## Example Detection Record
+
+| Field | Value |
+|---|---|
+| Name | Unusual sign-in followed by privileged action |
+| Hypothesis | Account misuse may show risky authentication followed by privileged change |
+| Data sources | IdP sign-ins, admin audit logs, asset inventory |
+| Severity | High if privileged group or sensitive asset involved |
+| Confidence | Medium until enriched with baseline and change ticket context |
+| False positives | Travel, new device, planned admin work, emergency access test |
+| Triage | Review sign-in context, admin action, change ticket, endpoint health |
+| Response | Revoke sessions, reset password, remove unauthorized privilege |
+
+## Metrics
+
+- Alert count per week
+- True positive count
+- False positive categories
+- Mean time to triage
+- Mean time to escalate
+- Detections without owner
+- Detections past review date
 
 ## References
 
 - MITRE ATT&CK: https://attack.mitre.org/
 - Sigma: https://sigmahq.io/
-- Elastic Detection Engineering: https://www.elastic.co/security-labs
 - Splunk Security Content: https://research.splunk.com/

@@ -1,0 +1,38 @@
+{
+  "id": "DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+  "name": "New Systemd Service Created",
+  "status": "experimental",
+  "hypothesis": "Persistence may involve new systemd service creation.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "linux_audit_logs",
+    "edr_file_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "service_name",
+    "actor"
+  ],
+  "false_positives": [
+    "agent deployment"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/linux/new-systemd-service-created.md",
+  "test_case_id": "TEST-DET-LINUX-NEW_SYSTEMD_SERVICE_CREATED",
+  "logic": "new systemd unit and actor not config_mgmt",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

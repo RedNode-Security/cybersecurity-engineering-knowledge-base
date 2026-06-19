@@ -1,0 +1,124 @@
+[
+  {
+    "event_id": "evt-k8s-001",
+    "verb": "create",
+    "resource": "clusterrolebinding",
+    "role": "cluster-admin",
+    "actor": "user@example.com",
+    "detection_id": "DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-001",
+    "verb": "create",
+    "resource": "clusterrolebinding",
+    "role": "view",
+    "actor": "cluster-bootstrap",
+    "approved": true,
+    "detection_id": "DET-KUBERNETES-CLUSTER_ADMIN_BINDING_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-k8s-002",
+    "verb": "get",
+    "resource": "secrets",
+    "actor": "system:serviceaccount:default:builder",
+    "namespace": "prod",
+    "detection_id": "DET-KUBERNETES-SECRET_READ_UNUSUAL_SERVICE_ACCOUNT",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-002",
+    "verb": "get",
+    "resource": "secrets",
+    "actor": "external-secrets-controller",
+    "namespace": "prod",
+    "detection_id": "DET-KUBERNETES-SECRET_READ_UNUSUAL_SERVICE_ACCOUNT",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-k8s-003",
+    "verb": "create",
+    "resource": "pods",
+    "privileged": true,
+    "namespace": "prod",
+    "detection_id": "DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-003",
+    "verb": "create",
+    "resource": "pods",
+    "privileged": true,
+    "namespace": "security-tools",
+    "approved": true,
+    "detection_id": "DET-KUBERNETES-PRIVILEGED_POD_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-k8s-004",
+    "verb": "create",
+    "subresource": "exec",
+    "namespace": "prod",
+    "actor": "user@example.com",
+    "detection_id": "DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-004",
+    "verb": "create",
+    "subresource": "exec",
+    "namespace": "prod",
+    "actor": "sre@example.com",
+    "incident_id": "INC-1",
+    "detection_id": "DET-KUBERNETES-POD_EXEC_SENSITIVE_NAMESPACE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-k8s-005",
+    "verb": "create",
+    "resource": "pods",
+    "volume_type": "hostPath",
+    "namespace": "default",
+    "detection_id": "DET-KUBERNETES-HOSTPATH_MOUNT_CREATED",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-005",
+    "verb": "create",
+    "resource": "pods",
+    "volume_type": "hostPath",
+    "namespace": "monitoring",
+    "approved": true,
+    "detection_id": "DET-KUBERNETES-HOSTPATH_MOUNT_CREATED",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  },
+  {
+    "event_id": "evt-k8s-006",
+    "actor": "builder",
+    "denied_count_10m": 20,
+    "policy": "restricted-pod-security",
+    "detection_id": "DET-KUBERNETES-ADMISSION_DENIED_SPIKE",
+    "expected_result": "alert",
+    "sample_type": "positive"
+  },
+  {
+    "event_id": "evt-k8s-benign-006",
+    "actor": "ci-system",
+    "denied_count_10m": 5,
+    "deployment_test": true,
+    "detection_id": "DET-KUBERNETES-ADMISSION_DENIED_SPIKE",
+    "expected_result": "no_alert",
+    "sample_type": "benign"
+  }
+]

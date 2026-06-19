@@ -1,0 +1,39 @@
+{
+  "id": "DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+  "name": "Security Tool Service Stopped",
+  "status": "experimental",
+  "hypothesis": "Defense impairment may involve stopping security services.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "windows_system_events",
+    "edr_process_events"
+  ],
+  "required_fields": [
+    "timestamp",
+    "host",
+    "service_name",
+    "actor"
+  ],
+  "false_positives": [
+    "maintenance",
+    "agent upgrade"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/windows/security-tool-service-stopped.md",
+  "test_case_id": "TEST-DET-WINDOWS-SECURITY_TOOL_SERVICE_STOPPED",
+  "logic": "security_service stopped and not maintenance",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}

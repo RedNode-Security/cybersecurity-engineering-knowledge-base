@@ -10,22 +10,53 @@ difficulty: intermediate
 safe_publication: true
 ---
 
+
 # Incident Response
 
 ## Overview
 
-Incident response converts security alerts and evidence into containment, eradication, recovery, and lessons learned.
+Incident response is the structured process of identifying, investigating,
+containing, eradicating, recovering from, and learning from security incidents.
 
-## Standard Flow
+## Lifecycle
 
-1. Preparation
-2. Identification
-3. Triage
-4. Containment
-5. Eradication
-6. Recovery
-7. Lessons learned
+```text
+Preparation → Identification → Triage → Containment → Eradication → Recovery → Lessons Learned
+```
 
-## Playbook Structure
+## Local Pages
 
-Use [`../../99-Templates/incident-response-playbook-template.md`](../../99-Templates/incident-response-playbook-template.md) for repeatable response workflows.
+- [Account Compromise Playbook](account-compromise-playbook.md)
+- [Example Account Compromise Case](example-account-compromise-case.md)
+
+## Response Priorities
+
+1. Protect people and safety.
+2. Preserve evidence.
+3. Stop active harm.
+4. Restore trusted operations.
+5. Communicate clearly.
+6. Improve controls and detections.
+
+## Evidence Standard
+
+Every case should record:
+
+- Alert source
+- Timeline
+- Affected users and assets
+- Evidence sources
+- Analyst decisions
+- Approvals
+- Actions taken
+- Lessons learned
+
+## Playbook Quality Checklist
+
+- [ ] Trigger conditions are clear.
+- [ ] Severity criteria are defined.
+- [ ] Triage steps are actionable.
+- [ ] Evidence preservation is documented.
+- [ ] Containment actions include approval guidance.
+- [ ] Recovery criteria are defined.
+- [ ] Lessons learned feed back into controls.

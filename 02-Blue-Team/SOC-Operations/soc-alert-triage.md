@@ -10,76 +10,60 @@ difficulty: beginner
 safe_publication: true
 ---
 
+
 # SOC Alert Triage Workflow
 
 ## Overview
 
-Alert triage is the process of determining whether a security alert represents benign activity, suspicious activity, or a confirmed incident.
+Alert triage determines whether an alert is benign, suspicious, duplicate, or a
+confirmed incident. Good triage is evidence-driven and repeatable.
 
-## Triage Goals
+## Workflow
 
-- Validate whether the alert is real
-- Determine affected users, systems, and data
-- Establish scope and impact
-- Decide whether escalation is needed
-- Preserve evidence for follow-up
-
-## Standard Workflow
-
-1. Read the alert summary and detection logic.
-2. Identify affected identity, asset, application, or cloud resource.
-3. Review the timeline before and after the alert.
-4. Enrich with asset criticality, user role, location, and vulnerability context.
-5. Check for related alerts or threat intelligence matches.
-6. Determine likely classification.
-7. Escalate, close, or tune.
+1. Read alert hypothesis and logic.
+2. Identify affected user, asset, application, and data source.
+3. Build a timeline before and after the alert.
+4. Enrich with asset criticality and user role.
+5. Check related alerts and threat intelligence.
+6. Compare against known false positives.
+7. Classify and route.
+8. Document evidence and decision.
 
 ## Classification
 
-| Classification | Meaning |
-|---|---|
-| Benign true positive | Expected behavior that matched the rule |
-| False positive | Rule logic matched incorrectly |
-| Suspicious | Needs more investigation |
-| Confirmed incident | Malicious or policy-violating activity confirmed |
-| Duplicate | Already handled in another case |
+| Classification | Meaning | Example action |
+|---|---|---|
+| False positive | Rule matched incorrectly | Tune rule |
+| Benign true positive | Expected activity matched rule | Close with reason |
+| Suspicious | Needs investigation | Escalate to Tier 2 |
+| Confirmed incident | Malicious or policy violation | Start playbook |
+| Duplicate | Already handled | Link to parent case |
 
-## Evidence to Capture
+## Example Triage Note
 
-- Alert name and ID
-- Timestamp and time zone
-- User and host identifiers
-- Source and destination context
-- Relevant logs and screenshots
-- Analyst notes and assumptions
-- Escalation decision and owner
+```text
+Alert: Privileged group membership change
+Actor: EXAMPLE\helpdesk01
+Target: EXAMPLE\temp.admin
+Group: Domain Admins
+Finding: No change ticket found. Actor does not normally modify Domain Admins.
+Decision: Suspicious. Escalated to incident response.
+```
 
 ## Escalation Criteria
 
-Escalate when:
+Escalate if:
 
-- Privileged identity is involved
-- Sensitive asset is involved
-- Malware execution is suspected
-- Data exposure is possible
-- Multiple related alerts appear
-- Triage cannot explain the activity
+- Privileged identity is involved.
+- Sensitive asset is involved.
+- Activity is unexplained.
+- Multiple related alerts exist.
+- Possible data access or malware execution occurred.
 
-## Automation Strategy
+## Automation Ideas
 
-Automate enrichment, not judgment:
-
-- Asset criticality lookup
-- User department and manager lookup
-- Recent authentication summary
-- Recent endpoint alerts
-- Known maintenance window lookup
-- Threat intelligence enrichment
-- Case template creation
-
-Keep containment actions human-approved unless the action is low-risk and highly reliable.
-
-## References
-
-- NIST incident handling guidance
-- MITRE ATT&CK: https://attack.mitre.org/
+- Auto-populate case template.
+- Enrich user and asset context.
+- Pull recent sign-ins and recent alerts.
+- Link related cases.
+- Suggest playbook based on alert type.

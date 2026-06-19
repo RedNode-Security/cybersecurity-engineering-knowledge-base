@@ -1,0 +1,40 @@
+{
+  "id": "DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+  "name": "Risky Sign-in Followed by Privileged Action",
+  "status": "experimental",
+  "hypothesis": "Account misuse may show risky authentication followed by privileged action.",
+  "severity": "high",
+  "confidence": "medium",
+  "data_sources": [
+    "identity_signin_logs",
+    "admin_audit_logs"
+  ],
+  "required_fields": [
+    "timestamp",
+    "user",
+    "source_ip",
+    "risk",
+    "action"
+  ],
+  "false_positives": [
+    "approved admin change",
+    "travel with managed device"
+  ],
+  "triage_steps": [
+    "Confirm affected entity and timestamp",
+    "Review surrounding events for 24 hours",
+    "Check approved change or expected business activity",
+    "Escalate if behavior remains unexplained"
+  ],
+  "response_actions": [
+    "Preserve relevant logs",
+    "Open an incident case if suspicious",
+    "Contain affected identity, host, or resource if compromise is confirmed"
+  ],
+  "owner": "detection-engineering",
+  "review_date": "2026-09-19",
+  "reference_page": "02-Blue-Team/Detection-Engineering/reference-library/identity/risky-signin-privileged-action.md",
+  "test_case_id": "TEST-DET-IDENTITY-RISKY_SIGNIN_PRIVILEGED_ACTION",
+  "logic": "risky_signin(user) join privileged_action(user) within 60m",
+  "mitre_mapping": "Multiple behaviors; map during deployment"
+}
