@@ -297,7 +297,7 @@ Generated from Markdown files.
 - [Project Status](PROJECT_STATUS.md)
 - [Published Index](PUBLISHED_INDEX.md)
 - [Publishing Guide](PUBLISHING.md)
-- [Cybersecurity Engineering Knowledge Base](README.md)
+- [Cybersecurity Engineering Handbook](README.md)
 - [Reference-Grade Roadmap](REFERENCE_GRADE_ROADMAP.md)
 
 ## RELEASE_NOTES
