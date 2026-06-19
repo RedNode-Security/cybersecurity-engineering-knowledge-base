@@ -3,7 +3,7 @@
 [![Validate repository](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/validate.yml/badge.svg)](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/validate.yml)
 [![Markdown Validation](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/markdown-check.yml/badge.svg)](https://github.com/RedNode-Security/cybersecurity-engineering-knowledge-base/actions/workflows/markdown-check.yml)
 
-A professional cybersecurity engineering knowledge base for security notes, CVE analysis, IOC samples, detection engineering, incident response, architecture patterns, and automation ideas.
+A practical cybersecurity engineering knowledge base covering security fundamentals, detection engineering, incident response, threat intelligence, cloud security, application security, AI security, automation, and security architecture.
 
 > **Core philosophy:** Understand → Model → Detect → Automate → Improve
 
